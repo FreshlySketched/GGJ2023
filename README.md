@@ -1,2 +1,5 @@
 # GGJ2023
-Theme: Roots
+
+**Theme:** Roots
+
+**Team:** Adam, Dylan, Kye, Lily, Steven 
