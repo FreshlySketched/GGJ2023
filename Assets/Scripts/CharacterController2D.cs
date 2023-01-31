@@ -11,20 +11,22 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 50f; //Default to 50
     [SerializeField] private float _moveVelocity = 10f;
+    [SerializeField] private Health _playerHealth;
 
 
-    private Shield _shield;
+    private Shield _playerShield;
 
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
+        _playerHealth = GetComponent<Health>();
     }
     private void OnEnable(){_controls.Enable();}    
     private void OnDisable(){ _controls.Disable();}
 
     private void Start() 
     {
-        _shield = GetComponent<Shield>();
+        _playerShield = GetComponent<Shield>();
 
         //Subscribe to input events.
         _controls.Player.Attack_1.performed += LightAttack;
@@ -36,16 +38,24 @@ public class CharacterController2D : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context) 
     {
+
     }
+
     private void LightAttack(InputAction.CallbackContext context) 
     {
+
     }
+
     private void HeavyAttack(InputAction.CallbackContext context) 
     {
+
     }
+
     private void SpecialAttack(InputAction.CallbackContext context) 
     {
+
     }
+
     private void Jump(InputAction.CallbackContext context) 
     {
         //Debug.Log(context.action);
@@ -56,6 +66,12 @@ public class CharacterController2D : MonoBehaviour
     }    
 
     private void Update() {
+        if(_playerHealth.currentHealth <= 0)
+        {
+            //GameManager.Death();
+        }
+
+        //need to add a face direction
 
     }
 
@@ -72,7 +88,19 @@ public class CharacterController2D : MonoBehaviour
         if(_grounded)
         {
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);             
-        }
-        
+        }        
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+
+        if(_playerShield._blockVal <= 0)
+        {
+            if(other.gameObject.CompareTag("Enemy"))
+            {
+                //float damage = 0;
+                //damage -= other.gameObject.GetComponent<DamageDealer>().damage;
+                _playerHealth.ChangeHealthBar(other.gameObject.GetComponent<DamageDealer>().damage);
+            }
+        }        
     }
 }
