@@ -3,8 +3,9 @@ using UnityEngine.InputSystem;
 
 public class CharacterController2D : MonoBehaviour
 {
+    
     private Rigidbody2D _rb2d;
-    private PlayerInputActions _controls;
+    public PlayerInputActions _controls;
     [SerializeField] private Transform _groundCheck;
     private bool _grounded;
     [SerializeField] private float _groundCheckRadius = .1f;
@@ -32,6 +33,7 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Special.performed += SpecialAttack;
         _controls.Player.Interact.performed += Interact;
         _controls.Player.Jump.performed += Jump;
+
     }
 
     private void Interact(InputAction.CallbackContext context) 
