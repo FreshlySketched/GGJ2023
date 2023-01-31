@@ -15,15 +15,15 @@ public class Shield : MonoBehaviour
     private Coroutine _currentlyRunning;
 
     private void Awake() {
-        _shieldSpriteSize = GetComponentInChildren<ShieldObj>().gameObject.transform.localScale; 
+        _shieldSpriteSize = GetComponentInChildren<ShieldObj>().gameObject.transform.localScale;
     }
     private void Start() {
         _blockVal = 100;        
-        _regenTick = true;     
+        _regenTick = true;
+            
     }
 
-    private void Update() {
-        GetComponentInChildren<ShieldObj>().gameObject.transform.localScale = _shieldSpriteSize;
+    private void LateUpdate() {        
 
         if(_blockVal < 100 && !_beenHit && _regenTick)
         {
@@ -38,6 +38,7 @@ public class Shield : MonoBehaviour
             _blockVal = 100;
             _shieldSpriteSize = new Vector3(1,1,1);
         }
+        GetComponentInChildren<ShieldObj>().gameObject.transform.localScale = _shieldSpriteSize;
     }
 
     private void TakeHit(int attackDmg)
