@@ -10,6 +10,8 @@ public class TentaCrabManager : MonoBehaviour
     public GameObject eyeObj1;
     public GameObject eyeObj2;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,4 +23,12 @@ public class TentaCrabManager : MonoBehaviour
     {
         
     }
+
 }
+
+public struct Attack
+{
+
+}
+
+
