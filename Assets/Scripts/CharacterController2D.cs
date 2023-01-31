@@ -10,7 +10,7 @@ public class CharacterController2D : MonoBehaviour
     private bool _grounded;
     [SerializeField] private float _groundCheckRadius = .1f;
     [SerializeField] private LayerMask _whatIsGround;   
-    [SerializeField] private float _jumpForce = 10f;
+    [SerializeField] private float _jumpForce = 50f; //Default to 50
     [SerializeField] private float _moveVelocity = 10f;
 
 
@@ -38,19 +38,15 @@ public class CharacterController2D : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context) 
     {
-        Debug.Log(context.action);
     }
     private void LightAttack(InputAction.CallbackContext context) 
     {
-        Debug.Log(context.action);
     }
     private void HeavyAttack(InputAction.CallbackContext context) 
     {
-        Debug.Log(context.action);
     }
     private void SpecialAttack(InputAction.CallbackContext context) 
     {
-        Debug.Log(context.action);
     }
     private void Jump(InputAction.CallbackContext context) 
     {
@@ -59,30 +55,16 @@ public class CharacterController2D : MonoBehaviour
             {
                 _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
             }
-    }
-    
-    
+    }    
 
-    private void Update() 
-    {
-        //Continuously check if the block button is being pressed. Allowing it to block Smash Bros style.
-        // if(_shield.BlockValue > 0)
-        // {
-        //     if(_controls.Player.Block.IsPressed())
-        //     {
-        //         Debug.Log(_controls.Player.Block.name);
-        //     }
-        // }
-
+    private void Update() {
 
     }
 
     private void FixedUpdate() 
     {
-        _grounded = false;
-        //Change normalized Vector2 during fixed update.    
-        float move = _controls.Player.Move.ReadValue<float>();
-               
+        _grounded = false;   
+        float move = _controls.Player.Move.ReadValue<float>();               
         
         if(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround))
         {
