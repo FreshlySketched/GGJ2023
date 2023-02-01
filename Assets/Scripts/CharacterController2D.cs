@@ -35,21 +35,20 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Attack_1.performed += LightAttack;
         _controls.Player.Attack_2.performed += HeavyAttack;
         _controls.Player.Special.performed += SpecialAttack;
-        _controls.Player.InteractUp.performed += InteractUp;
-        _controls.Player.InteractDown.performed += InteractDown;
+        _controls.Player.Interact.performed += Interact;
         _controls.Player.Jump.performed += Jump;
 
     }
 
-    private void InteractUp(InputAction.CallbackContext context) 
+    private void Interact(InputAction.CallbackContext context) 
     {
+        
+        if(context.action.triggered && context.action.ReadValue<float>() > 0)
+            m_interaction = true;
+        else if(context.action.triggered && context.action.ReadValue<float>() == default)
             m_interaction = false;
     }
 
-    private void InteractDown(InputAction.CallbackContext context)
-    {
-            m_interaction = true;
-    }
 
     private void LightAttack(InputAction.CallbackContext context) 
     {

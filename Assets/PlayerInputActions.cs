@@ -37,21 +37,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""InteractUp"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""b36207df-0069-4581-88b0-556bd9f6cfc6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""InteractDown"",
-                    ""type"": ""Button"",
-                    ""id"": ""29abe947-190f-44ee-bfc5-89de5a880c7b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -174,7 +165,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""InteractUp"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -185,7 +176,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""InteractUp"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -232,28 +223,6 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""595ced32-2b39-4dca-a7f2-ba96874c225d"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InteractDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e92d9180-c0f5-4956-a865-3443a91cba45"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""InteractDown"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -263,8 +232,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_InteractUp = m_Player.FindAction("InteractUp", throwIfNotFound: true);
-        m_Player_InteractDown = m_Player.FindAction("InteractDown", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Attack_1 = m_Player.FindAction(" Attack_1", throwIfNotFound: true);
         m_Player_Attack_2 = m_Player.FindAction("Attack_2", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
@@ -330,8 +298,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_InteractUp;
-    private readonly InputAction m_Player_InteractDown;
+    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Attack_1;
     private readonly InputAction m_Player_Attack_2;
     private readonly InputAction m_Player_Block;
@@ -342,8 +309,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @InteractUp => m_Wrapper.m_Player_InteractUp;
-        public InputAction @InteractDown => m_Wrapper.m_Player_InteractDown;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Attack_1 => m_Wrapper.m_Player_Attack_1;
         public InputAction @Attack_2 => m_Wrapper.m_Player_Attack_2;
         public InputAction @Block => m_Wrapper.m_Player_Block;
@@ -361,12 +327,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @InteractUp.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractUp;
-                @InteractUp.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractUp;
-                @InteractUp.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractUp;
-                @InteractDown.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractDown;
-                @InteractDown.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractDown;
-                @InteractDown.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteractDown;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Attack_1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack_1;
                 @Attack_1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack_1;
                 @Attack_1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack_1;
@@ -389,12 +352,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @InteractUp.started += instance.OnInteractUp;
-                @InteractUp.performed += instance.OnInteractUp;
-                @InteractUp.canceled += instance.OnInteractUp;
-                @InteractDown.started += instance.OnInteractDown;
-                @InteractDown.performed += instance.OnInteractDown;
-                @InteractDown.canceled += instance.OnInteractDown;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
                 @Attack_1.started += instance.OnAttack_1;
                 @Attack_1.performed += instance.OnAttack_1;
                 @Attack_1.canceled += instance.OnAttack_1;
@@ -417,8 +377,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnInteractUp(InputAction.CallbackContext context);
-        void OnInteractDown(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnAttack_1(InputAction.CallbackContext context);
         void OnAttack_2(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
