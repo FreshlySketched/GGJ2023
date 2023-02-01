@@ -6,8 +6,9 @@ public class PlayerStart : MonoBehaviour
 {
     public Vector2 m_startLocation { get; set; }
     public int m_doorNumber = -1;
-    public Transform[] doors;
-
+    public Transform[] m_doors;
+    public int m_health;
+    public bool[] m_weaponsAvaiable;
 
     void OnEnable()
     {

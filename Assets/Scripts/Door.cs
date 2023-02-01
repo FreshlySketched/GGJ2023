@@ -65,11 +65,7 @@ public class Door : MonoBehaviour
                 m_fade = false;
             }
         }
-        
-        if (onStart)
-        {
 
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
