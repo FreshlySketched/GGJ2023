@@ -1,16 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class CharacterController2D : MonoBehaviour
 {
+    
     private Rigidbody2D _rb2d;
-    private PlayerInputActions _controls;
+    public PlayerInputActions _controls;
     [SerializeField] private Transform _groundCheck;
     private bool _grounded;
     [SerializeField] private float _groundCheckRadius = .1f;
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 50f; //Default to 50
     [SerializeField] private float _moveVelocity = 10f;
+    public bool m_interaction = false;
     [SerializeField] private Health _playerHealth;
 
 
@@ -34,12 +37,18 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Special.performed += SpecialAttack;
         _controls.Player.Interact.performed += Interact;
         _controls.Player.Jump.performed += Jump;
+
     }
 
     private void Interact(InputAction.CallbackContext context) 
     {
-
+        
+        if(context.action.triggered && context.action.ReadValue<float>() > 0)
+            m_interaction = true;
+        else if(context.action.triggered && context.action.ReadValue<float>() == default)
+            m_interaction = false;
     }
+
 
     private void LightAttack(InputAction.CallbackContext context) 
     {
