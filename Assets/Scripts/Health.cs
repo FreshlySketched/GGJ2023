@@ -10,18 +10,22 @@ public class Health : MonoBehaviour
     private void Awake() 
     {
         currentHealth = _maxHealth;
-        healthbar.maxValue = _maxHealth;
+        if(healthbar!=null)
+            healthbar.maxValue = _maxHealth;
     }
 
     private void Start() 
     {
-        healthbar.value = currentHealth;
+        if (healthbar != null)
+            healthbar.value = currentHealth;
     }  
 
     public void ChangeHealthBar(float amount) 
     {
         currentHealth -= amount;
-        healthbar.value = currentHealth;
+
+        if (healthbar != null)
+            healthbar.value = currentHealth;
     }
 
 

@@ -7,16 +7,27 @@ public class TentaCrab_Eye : MonoBehaviour
     public LineRenderer lineRend;
     public Transform stalkPosition;
 
+    public List<Transform> positions = new List<Transform>();
+
+    public Transform targetPosition;
+
+    public float eyeMoveSpeed = 2f;
+    public float dstToPos;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        BeginAttack();
     }
 
     // Update is called once per frame
     void Update()
     {
         ConnectLine();
+
+        if(targetPosition != null)
+            MoveToPosition();
+
     }
 
     public void ConnectLine()
@@ -26,7 +37,6 @@ public class TentaCrab_Eye : MonoBehaviour
         float dst = Vector3.Distance(stalkPosition.position, this.transform.position);
         //now divide by 5(round to int) to get the number of segments
         int segments = (int)dst/5;
-        Debug.Log("Segments == " + segments);
         lineRend.positionCount = segments + 2;
 
         for (float i = 0; i < segments; i++)
@@ -42,4 +52,55 @@ public class TentaCrab_Eye : MonoBehaviour
 
 
     }
+
+
+    public void BeginAttack()
+    {
+        EyesMoveUp();
+        MoveToPosition();
+        
+        //Eyes move up
+        //Eyes move forward
+        //Eyes swing around
+        //Eyes return
+    }
+
+    public void MoveToPosition()
+    {
+        this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition.position, eyeMoveSpeed * Time.deltaTime);
+        dstToPos = Vector3.Distance(this.transform.position, targetPosition.position);
+        if (dstToPos <= 1f)
+        {
+            EyesMoveForward();
+        }
+    }
+
+    public void ChangePosition()
+    {
+
+    }
+
+    public void EyesMoveUp()
+    {
+        targetPosition = positions[0];
+    }
+
+    public void EyesMoveForward()
+    {
+        //randomly select an attack position
+        int posIndx = Random.Range(0, 4);
+
+        targetPosition = positions[posIndx];
+    }
+
+    public void EyesSwingAround()
+    {
+
+    }
+
+    public void EyesReturn()
+    {
+
+    }
+
 }

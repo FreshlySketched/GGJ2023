@@ -24,11 +24,16 @@ public class TentaCrabManager : MonoBehaviour
         
     }
 
+    public void Attack()
+    {
+        //we look at our previous attacks and the distance to the player
+        //select an attack
+        //carry out attack
+        //return and wait
+    }
+
 }
 
-public struct Attack
-{
 
-}
 
 

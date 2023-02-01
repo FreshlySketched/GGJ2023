@@ -15,4 +15,9 @@ public class TentaCrab_Claw : MonoBehaviour
     {
         
     }
+
+    public void ClawAttack()
+    {
+
+    }
 }
