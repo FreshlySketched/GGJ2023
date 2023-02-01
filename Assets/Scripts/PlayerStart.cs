@@ -18,7 +18,7 @@ public class PlayerStart : MonoBehaviour
         if (m_doorNumber - 1 == -1)
             transform.position = new Vector2(0, 2.3f);
         else
-            transform.position = doors[m_doorNumber - 1].position;
+            transform.position = m_doors[m_doorNumber - 1].position;
     }
 
 
