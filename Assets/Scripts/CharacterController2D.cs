@@ -95,10 +95,10 @@ public class CharacterController2D : MonoBehaviour
             _grounded = true;
         }
 
-        if(_grounded)
-        {
+        //if(_grounded)
+        //{
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);             
-        }        
+        //}        
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
