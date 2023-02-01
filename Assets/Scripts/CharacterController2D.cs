@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 50f; //Default to 50
     [SerializeField] private float _moveVelocity = 10f;
-
+    public bool m_interaction = false;
 
     private Shield _shield;
 
@@ -31,13 +32,20 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Attack_1.performed += LightAttack;
         _controls.Player.Attack_2.performed += HeavyAttack;
         _controls.Player.Special.performed += SpecialAttack;
-        _controls.Player.Interact.performed += Interact;
+        _controls.Player.InteractUp.performed += InteractUp;
+        _controls.Player.InteractDown.performed += InteractDown;
         _controls.Player.Jump.performed += Jump;
 
     }
 
-    private void Interact(InputAction.CallbackContext context) 
+    private void InteractUp(InputAction.CallbackContext context) 
     {
+            m_interaction = false;
+    }
+
+    private void InteractDown(InputAction.CallbackContext context)
+    {
+            m_interaction = true;
     }
     private void LightAttack(InputAction.CallbackContext context) 
     {

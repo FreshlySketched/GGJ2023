@@ -15,12 +15,21 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interact",
+                    "name": "InteractUp",
                     "type": "Button",
                     "id": "b36207df-0069-4581-88b0-556bd9f6cfc6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractDown",
+                    "type": "Button",
+                    "id": "29abe947-190f-44ee-bfc5-89de5a880c7b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -143,7 +152,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "InteractUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -154,7 +163,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "InteractUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -201,6 +210,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "595ced32-2b39-4dca-a7f2-ba96874c225d",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e92d9180-c0f5-4956-a865-3443a91cba45",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

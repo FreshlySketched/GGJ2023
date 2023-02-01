@@ -5,25 +5,28 @@ using UnityEngine;
 public class PlayerStart : MonoBehaviour
 {
     public Vector2 m_startLocation { get; set; }
+    public int m_doorNumber = -1;
+    public Transform[] doors;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void OnEnable()
     {
-        transform.position = new Vector2(PlayerPrefs.GetInt("startX"), PlayerPrefs.GetInt("startY"));
+       
+        m_doorNumber = PlayerPrefs.GetInt("DoorNumber");
+
+        if (m_doorNumber - 1 == -1)
+            transform.position = new Vector2(0, 2.3f);
+        else
+            transform.position = doors[m_doorNumber - 1].position;
     }
 
 
     void OnDisable()
     {
-        PlayerPrefs.SetFloat("startX", m_startLocation.x);
-        PlayerPrefs.SetFloat("startY", m_startLocation.y);
+        PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
+        if(!UnityEditor.EditorApplication.isPlaying)
+            PlayerPrefs.DeleteAll();
     }
-
 
 
 }
