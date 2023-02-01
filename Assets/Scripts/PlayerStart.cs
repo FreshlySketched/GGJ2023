@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,25 @@ public class PlayerStart : MonoBehaviour
     public int m_doorNumber = -1;
     public Transform[] m_doors;
     public int m_health;
-    public bool[] m_weaponsAvaiable;
+
+    public WeaponManager m_WeaponManger;
+
+
+    //public bool[] m_weaponsAvaiable;
+    private void Start()
+    {
+    }
+
 
     void OnEnable()
     {
-       
+        //PlayerPrefs.DeleteAll();
+
+        for (int i = 0; i < m_WeaponManger.m_weapons.Length; i++ )
+        {
+            m_WeaponManger.m_weapons[i].m_hasBeenActivated = Convert.ToBoolean(PlayerPrefs.GetInt(i.ToString()));
+        }
+
         m_doorNumber = PlayerPrefs.GetInt("DoorNumber");
 
         if (m_doorNumber - 1 == -1)
@@ -24,9 +39,14 @@ public class PlayerStart : MonoBehaviour
 
     void OnDisable()
     {
+        for (int i = 0; i < m_WeaponManger.m_weapons.Length; i++)
+        {
+            PlayerPrefs.SetInt(i.ToString(), Convert.ToInt32(m_WeaponManger.m_weapons[i].m_hasBeenActivated));
+        }
+
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
-        if(!UnityEditor.EditorApplication.isPlaying)
-            PlayerPrefs.DeleteAll();
+        
+
     }
 
 

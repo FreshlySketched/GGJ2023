@@ -83,12 +83,6 @@ public class Door : MonoBehaviour
         }
     }
 
-    void Awake()
-    {
-       
-       
-    }
-
     IEnumerator FadeIn()
     {
         onStart = false;

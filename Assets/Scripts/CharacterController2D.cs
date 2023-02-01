@@ -13,9 +13,11 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 50f; //Default to 50
     [SerializeField] private float _moveVelocity = 10f;
-    public bool m_interaction = false;
+   
     [SerializeField] private Health _playerHealth;
 
+    public bool m_interaction = false;
+    public bool m_weaponChange = true;
 
     private Shield _playerShield;
 
@@ -37,6 +39,7 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Special.performed += SpecialAttack;
         _controls.Player.Interact.performed += Interact;
         _controls.Player.Jump.performed += Jump;
+        _controls.Player.Swap_Weapon.performed += Swap_Weapon;
 
     }
 
@@ -49,6 +52,11 @@ public class CharacterController2D : MonoBehaviour
             m_interaction = false;
     }
 
+    private void Swap_Weapon(InputAction.CallbackContext context)
+    {
+       
+        m_weaponChange = true;
+    }
 
     private void LightAttack(InputAction.CallbackContext context) 
     {
@@ -81,7 +89,7 @@ public class CharacterController2D : MonoBehaviour
         }
 
         //need to add a face direction
-
+      
     }
 
     private void FixedUpdate() 
@@ -94,10 +102,15 @@ public class CharacterController2D : MonoBehaviour
             _grounded = true;
         }
 
-        if(_grounded)
-        {
+        //if(_grounded)
+        //{
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);             
-        }        
+        //}        
+    }
+
+    private void LateUpdate()
+    {
+        m_weaponChange = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
