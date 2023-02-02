@@ -39,6 +39,9 @@ public class PlayerStart : MonoBehaviour
 
         m_Health.currentHealth = PlayerPrefs.GetFloat("Health");
         m_Health.m_bones = PlayerPrefs.GetInt("Bones");
+
+        if(GameObject.FindGameObjectWithTag("Alter") != null)
+            GameObject.FindGameObjectWithTag("Alter").GetComponent<Alter>().m_totalBones = PlayerPrefs.GetInt("TotalBones");
     }
 
 
@@ -52,6 +55,8 @@ public class PlayerStart : MonoBehaviour
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
         PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
         PlayerPrefs.SetInt("Bones", m_Health.m_bones);
+        if (GameObject.FindGameObjectWithTag("Alter") != null)
+            PlayerPrefs.SetInt("TotalBones",GameObject.FindGameObjectWithTag("Alter").GetComponent<Alter>().m_totalBones);
 
     }
 

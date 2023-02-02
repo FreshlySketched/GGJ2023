@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public Slider healthbar;
 
     public int m_bones = 0;
-
+   
 
     private void Awake() 
     {
