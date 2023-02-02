@@ -41,7 +41,7 @@ public class Shield : MonoBehaviour
 
     private void LateUpdate() {        
 
-        if(_blockVal < 100 && !_beenHit && _regenTick)
+        if(_blockVal < 200 && !_beenHit && _regenTick)
         {
             _blockVal += _blockRegenAmount;
             float _sizeRegenAmount = _blockRegenAmount/100f;

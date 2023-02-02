@@ -23,7 +23,7 @@ public class PlayerStart : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
 
         for (int i = 0; i < m_WeaponManger.m_weapons.Length; i++ )
         {

@@ -20,8 +20,7 @@ public class TestStyle : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            collision.GetComponent<WeaponManager>().m_weapons[1].m_hasBeenActivated = true;
-            Debug.Log(collision.GetComponent<WeaponManager>().m_weapons[1].m_hasBeenActivated);
+            
         }
     }
 

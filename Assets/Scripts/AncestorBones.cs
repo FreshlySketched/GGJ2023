@@ -20,6 +20,8 @@ public class AncestorBones : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            collision.gameObject.GetComponent<WeaponManager>().m_weapons[1].m_hasBeenActivated = true;
+           // Debug.Log(collision.GetComponent<WeaponManager>().m_weapons[1].m_hasBeenActivated);
             collision.gameObject.GetComponent<Health>().m_bones++;
             Destroy(gameObject);
         }

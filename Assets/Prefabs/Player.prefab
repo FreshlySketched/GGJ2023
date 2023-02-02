@@ -482,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockVal: 0
   _shieldRegenCooldown: 2.5
-  _blockRegenAmount: 5
+  _blockRegenAmount: 10
   m_ShieldPress: 0
   shield: {fileID: 3921626559485845419}
 --- !u!114 &7814719980124683336
