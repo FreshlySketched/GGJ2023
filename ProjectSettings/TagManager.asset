@@ -8,6 +8,7 @@ TagManager:
   - Door1
   - Door2
   - Door3
+  - Alter
   layers:
   - Default
   - TransparentFX
