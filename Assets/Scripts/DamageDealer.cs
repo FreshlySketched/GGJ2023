@@ -8,7 +8,7 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] private float _knockbackRadius = 0.5f; 
     private bool _playerInKnockback;
     public CharacterController2D player;
-
+    public GameObject m_Bones;
     private void Start() {
         mask = LayerMask.GetMask("Player");
     }
@@ -16,7 +16,10 @@ public class DamageDealer : MonoBehaviour
     private void Update()
     {
         if (m_health == 0)
+        {
+            Instantiate(m_Bones, transform.position,transform.rotation);
             Destroy(gameObject);
+        }
     }
 
     private void FixedUpdate() {

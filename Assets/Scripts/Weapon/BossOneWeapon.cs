@@ -18,5 +18,13 @@ public class BossOneWeapon : BaseWeapon
 
     public override void PerformAttack()
     {
+        StartCoroutine(AttackWait());
     }
+
+    IEnumerator AttackWait()
+    {
+        yield return new WaitForSeconds(0.2f);
+        this.gameObject.SetActive(false);
+    }
+
 }

@@ -14,6 +14,7 @@ public class PlayerStart : MonoBehaviour
     public WeaponManager m_WeaponManger;
     public Health m_Health;
 
+
     //public bool[] m_weaponsAvaiable;
     private void Start()
     {
@@ -22,7 +23,7 @@ public class PlayerStart : MonoBehaviour
 
     void OnEnable()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         for (int i = 0; i < m_WeaponManger.m_weapons.Length; i++ )
         {
@@ -37,6 +38,7 @@ public class PlayerStart : MonoBehaviour
             transform.position = m_doors[m_doorNumber - 1].position;
 
         m_Health.currentHealth = PlayerPrefs.GetFloat("Health");
+        m_Health.m_bones = PlayerPrefs.GetInt("Bones");
     }
 
 
@@ -49,6 +51,7 @@ public class PlayerStart : MonoBehaviour
 
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
         PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
+        PlayerPrefs.SetInt("Bones", m_Health.m_bones);
 
     }
 

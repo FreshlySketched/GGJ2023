@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 7814719980124683336}
   - component: {fileID: -4312320023732180031}
   - component: {fileID: 8018115876388417327}
-  - component: {fileID: 988002523644623261}
+  - component: {fileID: 7304843230049724307}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -360,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 4150589733170806418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1590241240618116801}
@@ -411,8 +411,8 @@ SpriteRenderer:
   m_SortingLayerID: 543090241
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.0031594948, g: 0.6698113, b: 0.6698113, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 432dd0f813b393242a4439508ab4b6c7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -434,7 +434,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.79029816
+  m_Mass: 1.4580805
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 4
@@ -517,6 +517,7 @@ MonoBehaviour:
   currentHealth: 0
   _maxHealth: 25
   healthbar: {fileID: 0}
+  m_bones: 0
 --- !u!114 &8018115876388417327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +536,7 @@ MonoBehaviour:
   - {fileID: 1834893411504504328}
   m_currentWeapon: {fileID: 7555335886329725824}
   controller: {fileID: 7814719979760671620}
---- !u!70 &988002523644623261
+--- !u!70 &7304843230049724307
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -549,7 +550,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.72, y: 3.76}
   m_Direction: 0
 --- !u!1 &4514520085137388470
 GameObject:

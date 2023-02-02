@@ -102,10 +102,9 @@ public class CharacterController2D : MonoBehaviour
     private void Jump(InputAction.CallbackContext context) 
     {
         //Debug.Log(context.action);
-        if(_grounded)
-            {
+
                 _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
-            }
+            
     }    
 
     private void Update() {

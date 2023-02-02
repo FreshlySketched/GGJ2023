@@ -7,6 +7,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float _maxHealth = 25f;
     public Slider healthbar;
 
+    public int m_bones = 0;
+
+
     private void Awake() 
     {
         if (currentHealth == 100)
