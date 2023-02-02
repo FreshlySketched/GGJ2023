@@ -22,7 +22,8 @@ public class CharacterController2D : MonoBehaviour
     private Shield _playerShield;
 
     public bool m_shieldButton = false;
-    public bool isPressed;
+    public bool m_Attacked = false;
+    public bool m_dashed = false;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -36,7 +37,8 @@ public class CharacterController2D : MonoBehaviour
         _playerShield = GetComponent<Shield>();
 
         //Subscribe to input events.
-        _controls.Player.Attack_1.performed += LightAttack;
+        _controls.Player.Attack_1.started += LightAttack;
+        _controls.Player.Attack_1.canceled += LightAttack;
         _controls.Player.Block.started += Shield;
         _controls.Player.Block.canceled += Shield;
         _controls.Player.Special.performed += SpecialAttack;
@@ -44,6 +46,8 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Interact.canceled += Interact;
         _controls.Player.Jump.performed += Jump;
         _controls.Player.Swap_Weapon.performed += Swap_Weapon;
+
+        _controls.Player.Dash.performed += Dash;
 
     }
 
@@ -64,8 +68,20 @@ public class CharacterController2D : MonoBehaviour
 
     private void LightAttack(InputAction.CallbackContext context) 
     {
+        if (context.started)
+            m_Attacked = true;
+        
+
+           
 
     }
+
+    private void Dash(InputAction.CallbackContext context)
+    {
+        m_dashed = true;
+
+    }
+
 
     private void Shield(InputAction.CallbackContext context) 
     {
@@ -118,25 +134,34 @@ public class CharacterController2D : MonoBehaviour
 
         //if(_grounded)
         //{
-            _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);             
+            _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
         //}        
+
+
+        /*if (m_dashed)
+        {
+            _rb2d.AddForce(new Vector2(move * 50, _rb2d.velocity.y), ForceMode2D.Impulse);
+            m_dashed = false;
+
+        }*/
     }
 
     private void LateUpdate()
     {
         m_weaponChange = false;
+        m_Attacked = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-
-        if(_playerShield._blockVal <= 0 || !m_shieldButton)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (_playerShield._blockVal <= 0 || !m_shieldButton)
         {
-            if(other.gameObject.CompareTag("Enemy"))
+            if (collision.gameObject.CompareTag("Enemy"))
             {
                 //float damage = 0;
                 //damage -= other.gameObject.GetComponent<DamageDealer>().damage;
-                _playerHealth.ChangeHealthBar(other.gameObject.GetComponent<DamageDealer>().damage);
+                _playerHealth.ChangeHealthBar(collision.gameObject.GetComponent<DamageDealer>().damage);
             }
-        }        
+        }
     }
 }

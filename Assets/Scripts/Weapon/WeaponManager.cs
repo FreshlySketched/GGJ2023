@@ -25,6 +25,8 @@ public class WeaponManager : MonoBehaviour
 
         else
             Debug.LogError("No Weapons have been added to WeaponManager");
+
+        m_currentWeapon.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class WeaponManager : MonoBehaviour
             Debug.Log("Swap weapon has occurred");
             ChangeWeapon();
         }
+        AttackWithWeapon();
     }
 
     public void ChangeWeapon()
@@ -56,12 +59,21 @@ public class WeaponManager : MonoBehaviour
         }
 
         m_currentWeapon = m_weapons[m_currentID];
-        m_currentWeapon.gameObject.SetActive(true);
+       // m_currentWeapon.gameObject.SetActive(true);
 
         Debug.Log(m_currentWeapon.gameObject.name + " is the current weapon");
 
     }
-
+        
+    public void AttackWithWeapon()
+    {
+        if (controller.m_Attacked)
+        {
+            
+            m_currentWeapon.gameObject.SetActive(true);
+            m_currentWeapon.PerformAttack();
+        }
+    }
 
 
 }

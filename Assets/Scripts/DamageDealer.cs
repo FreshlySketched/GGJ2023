@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
+    public int m_health = 100;
     public int damage = 5;
     LayerMask mask;
     [SerializeField] private float _knockbackRadius = 0.5f; 
@@ -10,6 +11,12 @@ public class DamageDealer : MonoBehaviour
 
     private void Start() {
         mask = LayerMask.GetMask("Player");
+    }
+
+    private void Update()
+    {
+        if (m_health == 0)
+            Destroy(gameObject);
     }
 
     private void FixedUpdate() {

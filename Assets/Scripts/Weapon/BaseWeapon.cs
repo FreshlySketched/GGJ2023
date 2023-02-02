@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour
 {
-    public int m_Damage = 25;
+    [SerializeField]
+    private int m_Damage = 25;
     public bool m_hasBeenActivated = false;
 
     void Start()
@@ -19,5 +20,11 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     public abstract void PerformAttack();
+
+
+    public int GetDamage()
+    {
+        return m_Damage;
+    }
 
 }
