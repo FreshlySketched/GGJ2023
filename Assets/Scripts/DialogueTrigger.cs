@@ -1,58 +1,64 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 
 public class DialogueTrigger : MonoBehaviour
 {
     public TMP_Text dialogue;
-    [TextArea] public string[] textToDisplay = new string[5];
+    [TextArea] public string textToDisplay;
     private float t = 0f;
     public float fadeTime = 2.5f;
     private bool _fadeInText = false;
+    private bool _fadeOutText = false;
 
-    Dictionary<string, bool> textBoxDictionary = new Dictionary<string, bool>();
+    private void Start() {
+        dialogue.color = new Color (1,1,1,0);
+    }
 
-
-    private void Start() 
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        for(int i = 0; i < textToDisplay.Length; i++)
+        if(other.CompareTag("Player"))
+        {          
+            t = 0;
+            dialogue.text = textToDisplay;
+            _fadeInText = true;
+        }        
+    }
+
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if(other.CompareTag("Player"))
+        {                     
+            _fadeInText = false;
+            _fadeOutText = true;
+        }        
+    }
+
+    void Update()
+    {
+        if(_fadeInText)
         {
-            textBoxDictionary.Add(textToDisplay[i], false);
-            foreach(KeyValuePair<string, bool> kvp in textBoxDictionary)
-            Debug.Log(kvp);
+            t += (Time.deltaTime)/fadeTime;
+            dialogue.color = new Color(1,1,1,t);
+
+            if(t >= 1f)
+            {
+                _fadeInText = false;
+            }
+        }
+
+        if(_fadeOutText)
+        {
+            t -= Time.deltaTime;
+            dialogue.color = new Color(1,1,1,t);
+
+            if(t <= 0)
+            {
+                _fadeOutText = false;
+            }
         }
     }
-    // private void OnTriggerEnter2D(Collider2D other) 
-    // {
-    //     if(other.CompareTag("Player"))
-    //     {
-    //         dialogue.color = new Color(1,1,1,0);
-    //         dialogue.text = textToDisplay[0];
-    //         _fadeInText = true;
-    //     }        
-    // }
 
-    // private int WhichTextBoxToDisplay()
-    // {
-    //     for(int i = 0; i < textToDisplay.Length; i++)
-    //     {
-
-    //     }
-        
-    //     return 0;
-    // }
-
-    // void Update()
-    // {
-    //     if(t < fadeTime && _fadeInText)
-    //     {
-    //         t += Time.deltaTime/fadeTime;
-    //     }
-    //     dialogue.color = new Color(1,1,1,t); 
-
-    //     if(dialogue.color.a >= 1)
-    //     {
-    //         _fadeInText = false;
-    //     }       
-    // }
 }

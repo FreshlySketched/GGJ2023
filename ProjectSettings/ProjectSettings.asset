@@ -729,7 +729,12 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: USE_NEW_INPUT
+    Standalone: USE_NEW_INPUT
+    WebGL: USE_NEW_INPUT
+    Windows Store Apps: USE_NEW_INPUT
+    iPhone: USE_NEW_INPUT
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
