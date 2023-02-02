@@ -14,6 +14,10 @@ public class Shield : MonoBehaviour
     private Coroutine _currentlyRunning;
     private Vector3 _originalShieldSize;
 
+    [SerializeField]
+    private bool m_ShieldPress = false;
+
+    public SpriteRenderer shield;
     private void Awake() {
         _shieldSpriteSize = GetComponentInChildren<ShieldObj>().gameObject.transform.localScale;
     }
@@ -23,6 +27,17 @@ public class Shield : MonoBehaviour
         _regenTick = true;
         _originalShieldSize = GetComponentInChildren<ShieldObj>().gameObject.transform.localScale;          
     }
+
+    private void Update()
+    {
+        if (m_ShieldPress)
+            shield.enabled = true;
+        else
+            shield.enabled = false;
+
+
+    }
+
 
     private void LateUpdate() {        
 
@@ -67,7 +82,7 @@ public class Shield : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag("Enemy") && m_ShieldPress)
         {
             _beenHit = true;
             int dmg = other.gameObject.GetComponent<DamageDealer>().damage;
@@ -85,5 +100,11 @@ public class Shield : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         _regenTick = true;
+    }
+
+    public void CheckShieldPress(bool shieldPress)
+    {
+        m_ShieldPress = shieldPress;
+
     }
 }

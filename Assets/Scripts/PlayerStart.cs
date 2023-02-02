@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStart : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PlayerStart : MonoBehaviour
     public int m_health;
 
     public WeaponManager m_WeaponManger;
-
+    public Health m_Health;
 
     //public bool[] m_weaponsAvaiable;
     private void Start()
@@ -34,6 +35,8 @@ public class PlayerStart : MonoBehaviour
             transform.position = new Vector2(0, 2.3f);
         else
             transform.position = m_doors[m_doorNumber - 1].position;
+
+        m_Health.currentHealth = PlayerPrefs.GetFloat("Health");
     }
 
 
@@ -45,8 +48,17 @@ public class PlayerStart : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
-        
+        PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
 
+    }
+
+    private void Update()
+    {
+        if(m_Health.currentHealth <= 0)
+        {
+            m_Health.currentHealth = 100;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
 

@@ -9,8 +9,11 @@ public class Health : MonoBehaviour
 
     private void Awake() 
     {
-        currentHealth = _maxHealth;
-        healthbar.maxValue = _maxHealth;
+        if (currentHealth == 100)
+        {
+            currentHealth = _maxHealth;
+            healthbar.maxValue = _maxHealth;
+        }
     }
 
     private void Start() 

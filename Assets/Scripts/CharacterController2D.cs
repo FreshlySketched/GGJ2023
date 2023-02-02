@@ -21,6 +21,8 @@ public class CharacterController2D : MonoBehaviour
 
     private Shield _playerShield;
 
+    public bool m_shieldButton = false;
+    public bool isPressed;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -35,9 +37,11 @@ public class CharacterController2D : MonoBehaviour
 
         //Subscribe to input events.
         _controls.Player.Attack_1.performed += LightAttack;
-        _controls.Player.Attack_2.performed += HeavyAttack;
+        _controls.Player.Block.started += Shield;
+        _controls.Player.Block.canceled += Shield;
         _controls.Player.Special.performed += SpecialAttack;
-        _controls.Player.Interact.performed += Interact;
+        _controls.Player.Interact.started += Interact;
+        _controls.Player.Interact.canceled += Interact;
         _controls.Player.Jump.performed += Jump;
         _controls.Player.Swap_Weapon.performed += Swap_Weapon;
 
@@ -45,10 +49,10 @@ public class CharacterController2D : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context) 
     {
-        
-        if(context.action.triggered && context.action.ReadValue<float>() > 0)
+
+        if (context.started)
             m_interaction = true;
-        else if(context.action.triggered && context.action.ReadValue<float>() == default)
+        else if (context.canceled)
             m_interaction = false;
     }
 
@@ -63,8 +67,14 @@ public class CharacterController2D : MonoBehaviour
 
     }
 
-    private void HeavyAttack(InputAction.CallbackContext context) 
+    private void Shield(InputAction.CallbackContext context) 
     {
+
+        if (context.started)
+            m_shieldButton = true;
+
+        else if (context.canceled)
+            m_shieldButton = false;
 
     }
 
@@ -83,7 +93,11 @@ public class CharacterController2D : MonoBehaviour
     }    
 
     private void Update() {
-        if(_playerHealth.currentHealth <= 0)
+
+        _playerShield.CheckShieldPress(m_shieldButton);
+
+
+        if (_playerHealth.currentHealth <= 0)
         {
             //GameManager.Death();
         }
@@ -115,7 +129,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
 
-        if(_playerShield._blockVal <= 0)
+        if(_playerShield._blockVal <= 0 || !m_shieldButton)
         {
             if(other.gameObject.CompareTag("Enemy"))
             {
