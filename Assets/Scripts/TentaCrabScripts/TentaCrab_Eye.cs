@@ -17,6 +17,7 @@ public class TentaCrab_Eye : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        targetPosition = stalkPosition;
         BeginAttack();
     }
 
@@ -34,12 +35,12 @@ public class TentaCrab_Eye : MonoBehaviour
     {
 
         //first we get the distance
-        float dst = Vector3.Distance(stalkPosition.position, this.transform.position);
+        float dst = Vector3.Distance(this.transform.position, stalkPosition.position);
         //now divide by 5(round to int) to get the number of segments
         int segments = (int)dst/5;
         lineRend.positionCount = segments + 2;
 
-        for (float i = 0; i < segments; i++)
+        for (float i = 1; i < segments+1; i++)
         {
             //lineRend.SetPosition((int)i, Vector3.Lerp(stalkPosition.position, this.transform.position, i/segments));
             lineRend.SetPosition((int)i, Vector3.Lerp(this.transform.position, stalkPosition.position, i /segments));
@@ -50,13 +51,13 @@ public class TentaCrab_Eye : MonoBehaviour
         lineRend.SetPosition(0,  this.transform.position);
         lineRend.SetPosition(segments + 1, stalkPosition.position);
 
-
     }
 
 
     public void BeginAttack()
     {
-        EyesMoveUp();
+
+        //EyesMoveUp();
         MoveToPosition();
         
         //Eyes move up

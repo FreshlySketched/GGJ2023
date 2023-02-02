@@ -35,8 +35,8 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Attack_1.performed += LightAttack;
         _controls.Player.Attack_2.performed += HeavyAttack;
         _controls.Player.Special.performed += SpecialAttack;
-        _controls.Player.InteractUp.performed += InteractUp;
-        _controls.Player.InteractDown.performed += InteractDown;
+        //_controls.Player.InteractUp.performed += InteractUp;
+        //_controls.Player.InteractDown.performed += InteractDown;
         _controls.Player.Jump.performed += Jump;
 
     }
