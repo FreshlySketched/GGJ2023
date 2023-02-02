@@ -18,17 +18,35 @@ public class TentaCrab_Eye : MonoBehaviour
     void Start()
     {
         targetPosition = stalkPosition;
-        BeginAttack();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        //EyeAttack();
+
+
+
+
+    }
+
+    public void EyeAttack()
+    {
+        //Eyes move up
+        //Eyes move forward
+        //Eyes swing around
+        //Eyes return
+
+        startEyeAttack();
+    }
+
+    public void startEyeAttack()
+    {
         ConnectLine();
 
-        if(targetPosition != null)
+        if (targetPosition != null)
             MoveToPosition();
-
     }
 
     public void ConnectLine()
@@ -51,19 +69,6 @@ public class TentaCrab_Eye : MonoBehaviour
         lineRend.SetPosition(0,  this.transform.position);
         lineRend.SetPosition(segments + 1, stalkPosition.position);
 
-    }
-
-
-    public void BeginAttack()
-    {
-
-        //EyesMoveUp();
-        MoveToPosition();
-        
-        //Eyes move up
-        //Eyes move forward
-        //Eyes swing around
-        //Eyes return
     }
 
     public void MoveToPosition()

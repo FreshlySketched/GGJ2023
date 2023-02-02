@@ -1193,6 +1193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6e39fc901e9f2478a197cdf9994ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 437694900}
 --- !u!1 &546653913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,11 +2404,15 @@ MonoBehaviour:
   clawObj: {fileID: 437694896}
   eyeObj1: {fileID: 33673012}
   eyeObj2: {fileID: 2126293340}
+  isAttacking: 0
+  attackTime: 0
+  attackCooldownTime: 0
+  currentAttackState: 0
   chargeStartPosition: {fileID: 1052776320}
   chargeEndPosition: {fileID: 1501708953}
   chargeSpeed: 20
   returnSpeed: 10
-  currentState: 0
+  currentChargeState: 0
 --- !u!1 &2126293340
 GameObject:
   m_ObjectHideFlags: 0
