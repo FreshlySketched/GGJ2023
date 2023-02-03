@@ -8,6 +8,7 @@ TagManager:
   - Door1
   - Door2
   - Door3
+  - Alter
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Ground
   - Shield
   - Player
-  - 
+  - Weapon
   - 
   - 
   - 
@@ -42,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Door
+    uniqueID: 1033737801
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

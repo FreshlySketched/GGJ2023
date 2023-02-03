@@ -7,10 +7,16 @@ public class Health : MonoBehaviour
     [SerializeField] private float _maxHealth = 25f;
     public Slider healthbar;
 
+    public int m_bones = 0;
+   
+
     private void Awake() 
     {
-        currentHealth = _maxHealth;
-        healthbar.maxValue = _maxHealth;
+        if (currentHealth == 100)
+        {
+            currentHealth = _maxHealth;
+            healthbar.maxValue = _maxHealth;
+        }
     }
 
     private void Start() 
