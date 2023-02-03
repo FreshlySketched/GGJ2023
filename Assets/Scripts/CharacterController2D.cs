@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -24,6 +25,10 @@ public class CharacterController2D : MonoBehaviour
     public bool m_shieldButton = false;
     public bool m_Attacked = false;
     public bool m_dashed = false;
+
+    private bool m_dashTimer = false;
+
+    private bool m_hasJumped = false;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -101,10 +106,11 @@ public class CharacterController2D : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context) 
     {
-        //Debug.Log(context.action);
-
-                _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
-            
+        if (!m_hasJumped)
+        {
+            _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
+            m_hasJumped = false;
+        }
     }    
 
     private void Update() {
@@ -131,18 +137,23 @@ public class CharacterController2D : MonoBehaviour
             _grounded = true;
         }
 
-        //if(_grounded)
-        //{
-            _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
-        //}        
-
-
-        /*if (m_dashed)
+        if(_grounded)
         {
-            _rb2d.AddForce(new Vector2(move * 50, _rb2d.velocity.y), ForceMode2D.Impulse);
-            m_dashed = false;
+            m_hasJumped = false;
+        }        
 
-        }*/
+
+        if (m_dashed)
+        {
+            _rb2d.AddForce(new Vector2(move * 200, _rb2d.velocity.y), ForceMode2D.Impulse);
+            m_dashed = false;
+            m_dashTimer = true;
+            StartCoroutine(DashTime());
+            Debug.Log("Has Dashed");
+        }
+
+        else if(!m_dashTimer)
+            _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
     }
 
     private void LateUpdate()
@@ -162,5 +173,15 @@ public class CharacterController2D : MonoBehaviour
                 _playerHealth.ChangeHealthBar(collision.gameObject.GetComponent<DamageDealer>().damage);
             }
         }
+
+        else;
+    }
+
+    IEnumerator DashTime()
+    {
+
+        yield return new WaitForSeconds(0.06f);
+        new Vector2(0f, _rb2d.velocity.y);
+        m_dashTimer = false;
     }
 }

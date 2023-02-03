@@ -74,8 +74,8 @@ public class Shield : MonoBehaviour
         if(_currentlyRunning != null)
             {StopCoroutine(_currentlyRunning);}
             
-        _shieldSpriteSize.x -= reductionValue;
-        _shieldSpriteSize.y -= reductionValue;        
+        _shieldSpriteSize.x -= reductionValue * 2;
+        _shieldSpriteSize.y -= reductionValue * 2;        
         _currentlyRunning = StartCoroutine(RegenCooldown());                  
         
     }
