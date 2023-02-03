@@ -146,7 +146,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (m_dashed)
         {
-            _rb2d.AddForce(new Vector2(move * 200, _rb2d.velocity.y), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(move * 200, 0.0f), ForceMode2D.Impulse);
             m_dashed = false;
             m_dashTimer = true;
             StartCoroutine(DashTime());
