@@ -29,6 +29,7 @@ public class CharacterController2D : MonoBehaviour
     private bool m_dashTimer = false;
 
     private bool m_hasJumped = false;
+    private bool m_invunFrames = false;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -132,13 +133,20 @@ public class CharacterController2D : MonoBehaviour
     {
         //_grounded = false;   
         float move = _controls.Player.Move.ReadValue<float>();
-        //Debug.Log(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround));
-       // if(Physics2D.OverlapCircle(transform.position, _groundCheckRadius, _whatIsGround))
-       // {
-            
-       //}
 
-        if(_grounded)
+
+        if (move < 0)
+            GetComponent<SpriteRenderer>().flipX = false;
+        else
+            GetComponent<SpriteRenderer>().flipX = true;
+
+        //Debug.Log(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround));
+        // if(Physics2D.OverlapCircle(transform.position, _groundCheckRadius, _whatIsGround))
+        // {
+
+        //} 
+
+        if (_grounded)
         {
             m_hasJumped = false;
         }        
@@ -155,6 +163,9 @@ public class CharacterController2D : MonoBehaviour
 
         else if(!m_dashTimer)
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
+
+        else
+            _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
     }
 
     private void LateUpdate()
@@ -165,13 +176,15 @@ public class CharacterController2D : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_playerShield._blockVal <= 0 || !m_shieldButton)
+        if ((_playerShield._blockVal <= 0 || !m_shieldButton) && !m_invunFrames)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
                 //float damage = 0;
                 //damage -= other.gameObject.GetComponent<DamageDealer>().damage;
                 _playerHealth.ChangeHealthBar(collision.gameObject.GetComponent<DamageDealer>().damage);
+                m_invunFrames = true;
+                StartCoroutine(InvunCounter());
             }
         }
 
@@ -180,6 +193,8 @@ public class CharacterController2D : MonoBehaviour
             _grounded = true;
         }
 
+        if(m_hasJumped)
+            _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
     }
 
     IEnumerator DashTime()
@@ -189,4 +204,13 @@ public class CharacterController2D : MonoBehaviour
         new Vector2(0f, _rb2d.velocity.y);
         m_dashTimer = false;
     }
+
+    IEnumerator InvunCounter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_invunFrames = false;
+
+    }
+
+
 }
