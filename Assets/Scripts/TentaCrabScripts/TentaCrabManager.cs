@@ -30,12 +30,14 @@ public class TentaCrabManager : MonoBehaviour
     [Header ("Charge Attack Vars")]
     public Transform chargeStartPosition;
     public Transform chargeEndPosition;
+    public float chargeWindUpTime;
+    public float chargeAttackTime;
     public float chargeSpeed;
     public float returnSpeed;
 
     [Header("ChargeStates")]
     public ChargeStates currentChargeState;
-    public enum ChargeStates { chargeForward, chargeReturn };
+    public enum ChargeStates { chargeWindup, chargeForward, chargeReturn };
 
 
     
@@ -47,7 +49,7 @@ public class TentaCrabManager : MonoBehaviour
     void Start()
     {
         //Attack();
-        currentChargeState = ChargeStates.chargeForward;
+        currentChargeState = ChargeStates.chargeWindup;
 
         crab_Claw_Script = FindObjectOfType<TentaCrab_Claw>();
         crab_Eye_Script1 = eyeObj1.GetComponent<TentaCrab_Eye>();
@@ -125,6 +127,9 @@ public class TentaCrabManager : MonoBehaviour
 
         switch (currentChargeState)
         {
+            case ChargeStates.chargeWindup:
+                ChargeWindup();
+                break;
             case ChargeStates.chargeForward:
                 ChargeForward();
                 break;
@@ -135,6 +140,43 @@ public class TentaCrabManager : MonoBehaviour
         }
 
     }
+
+    public void SwitchAttack()
+    {
+        int attackIndex = Random.Range(0, 3);
+
+        switch (attackIndex)
+        {
+            case 0:
+                currentAttackState = AttackStates.clawAttack;
+                currentChargeState = ChargeStates.chargeWindup;
+                break;
+            case 1:
+                currentAttackState = AttackStates.eyeAttack;
+                break;
+            case 2:
+                currentAttackState = AttackStates.chargeAttack;
+                break;
+        }
+    }
+
+
+
+    public void ChargeWindup()
+    {
+        headObj.GetComponent<StrobeEffect>().isStrobing = true;
+        StartCoroutine(ChargeWindUpTimer());
+    }
+
+    IEnumerator ChargeWindUpTimer()
+    {
+        yield return new WaitForSeconds(chargeWindUpTime);
+        Debug.Log("Charge Timer Over");
+        headObj.GetComponent<StrobeEffect>().isStrobing = false;
+        currentChargeState = ChargeStates.chargeForward;
+
+    }
+
 
     public void ChargeForward()
     {
@@ -155,8 +197,10 @@ public class TentaCrabManager : MonoBehaviour
         float dstToPos = Vector3.Distance(this.transform.position, chargeStartPosition.position);
         if (dstToPos <= 1f)
         {
-            currentChargeState = ChargeStates.chargeForward;
-            ChargeForward();
+            SwitchAttack();
+
+            //currentChargeState = ChargeStates.chargeForward;
+            //ChargeForward();
         }
     }
 
@@ -165,12 +209,12 @@ public class TentaCrabManager : MonoBehaviour
 
         switch (currentChargeState)
         {
-            case ChargeStates.chargeForward:
+            //case ChargeStates.chargeForward:
                 //
-                break;
-            case ChargeStates.chargeReturn:
+                //break;
+            //case ChargeStates.chargeReturn:
                 //ChargeReturn();
-                break;
+                //break;
 
         }
 

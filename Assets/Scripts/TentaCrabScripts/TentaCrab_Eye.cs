@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TentaCrab_Eye : MonoBehaviour
 {
+    public enum EyeStates {eyeWindup,EyeAttack,eyeReturn};
+    public EyeStates currentEyeState;
+
     public LineRenderer lineRend;
     public Transform stalkPosition;
 
@@ -17,6 +20,7 @@ public class TentaCrab_Eye : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentEyeState = EyeStates.eyeWindup;
         targetPosition = stalkPosition;
     }
 
@@ -83,6 +87,19 @@ public class TentaCrab_Eye : MonoBehaviour
 
     public void ChangePosition()
     {
+
+    }
+
+    public void EyesWindUp()
+    {
+        StartCoroutine(EyesWindUpTimer());
+    }
+
+    IEnumerator EyesWindUpTimer()
+    {
+        yield return new WaitForSeconds(chargeWindUpTime);
+        Debug.Log("Charge Timer Over");
+        currentChargeState = ChargeStates.chargeForward;
 
     }
 
