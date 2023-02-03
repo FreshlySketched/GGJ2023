@@ -9,7 +9,7 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D _rb2d;
     public PlayerInputActions _controls;
     [SerializeField] private Transform _groundCheck;
-    private bool _grounded;
+    private bool _grounded = true;
     [SerializeField] private float _groundCheckRadius = .1f;
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 50f; //Default to 50
@@ -109,7 +109,8 @@ public class CharacterController2D : MonoBehaviour
         if (!m_hasJumped)
         {
             _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
-            m_hasJumped = false;
+            m_hasJumped = true;
+            _grounded = false;
         }
     }    
 
@@ -129,13 +130,13 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        _grounded = false;   
-        float move = _controls.Player.Move.ReadValue<float>();               
-        
-        if(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround))
-        {
-            _grounded = true;
-        }
+        //_grounded = false;   
+        float move = _controls.Player.Move.ReadValue<float>();
+        //Debug.Log(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround));
+       // if(Physics2D.OverlapCircle(transform.position, _groundCheckRadius, _whatIsGround))
+       // {
+            
+       //}
 
         if(_grounded)
         {
@@ -174,7 +175,11 @@ public class CharacterController2D : MonoBehaviour
             }
         }
 
-        else;
+        if(collision.gameObject.layer == 6)
+        {
+            _grounded = true;
+        }
+
     }
 
     IEnumerator DashTime()
