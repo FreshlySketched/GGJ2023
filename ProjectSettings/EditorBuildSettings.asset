@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossOne.unity
     guid: ee84956984c318e4b9c43181d6e09c49
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: fb36d02119a638340aee27dfa1dd9e0c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 46bc6bccbff5a804d8e85ce5af9ffc6f, type: 2}

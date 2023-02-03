@@ -48,7 +48,7 @@ public class Alter : MonoBehaviour
                     weapon.m_hasBeenActivated = false;
                 }
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                SceneManager.LoadScene("Ending");
 
             }
 
