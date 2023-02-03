@@ -30,6 +30,8 @@ public class CharacterController2D : MonoBehaviour
 
     private bool m_hasJumped = false;
     private bool m_invunFrames = false;
+
+    public bool m_Flipped = false;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -136,10 +138,15 @@ public class CharacterController2D : MonoBehaviour
 
 
         if (move < 0)
+        {
             GetComponent<SpriteRenderer>().flipX = false;
-        else
+            m_Flipped = false;
+        }
+        else if (move > 0)
+        {
             GetComponent<SpriteRenderer>().flipX = true;
-
+            m_Flipped = true;
+        }
         //Debug.Log(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround));
         // if(Physics2D.OverlapCircle(transform.position, _groundCheckRadius, _whatIsGround))
         // {
@@ -182,6 +189,7 @@ public class CharacterController2D : MonoBehaviour
             {
                 //float damage = 0;
                 //damage -= other.gameObject.GetComponent<DamageDealer>().damage;
+              
                 _playerHealth.ChangeHealthBar(collision.gameObject.GetComponent<DamageDealer>().damage);
                 m_invunFrames = true;
                 StartCoroutine(InvunCounter());
