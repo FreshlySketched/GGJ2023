@@ -17,7 +17,8 @@ public class TentaCrabManager : MonoBehaviour
     
 
     [Header("AttackVars")]
-    public bool isAttacking;
+    public bool isAttacking = false;
+    public bool isCoolingDown = false;
     public float attackTime;
     public float attackCooldownTime;
 
@@ -66,12 +67,19 @@ public class TentaCrabManager : MonoBehaviour
     {
         yield return new WaitForSeconds(attackTime);
         isAttacking = false;
+        isCoolingDown = true;
     }
 
     IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldownTime);
         isAttacking = true;
+        isCoolingDown = false;
+    }
+
+    public void BeginAttack()
+    {
+        
     }
 
     public void Attack()
@@ -84,12 +92,16 @@ public class TentaCrabManager : MonoBehaviour
         //Create StateMachine Here
 
 
-        if (isAttacking)
+        if (!isAttacking)
         {
+            isAttacking = true;
+            StartCoroutine(AttackTimer());
             AttackStateMachine();
         }
-        else
+        else if(isCoolingDown)
         {
+            isCoolingDown = false;
+            StartCoroutine(AttackCooldown());
             //Idle
         }
         
@@ -111,8 +123,8 @@ public class TentaCrabManager : MonoBehaviour
                 break;
             case AttackStates.eyeAttack:
                 //eye attack
-                crab_Eye_Script1.startEyeAttack();
-                crab_Eye_Script2.startEyeAttack();
+                crab_Eye_Script1.EyeAttack_SM();
+                crab_Eye_Script2.EyeAttack_SM();
                 break;
             case AttackStates.chargeAttack:
                 //charge attack
@@ -153,6 +165,8 @@ public class TentaCrabManager : MonoBehaviour
                 break;
             case 1:
                 currentAttackState = AttackStates.eyeAttack;
+                crab_Eye_Script1.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
+                crab_Eye_Script2.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
                 break;
             case 2:
                 currentAttackState = AttackStates.chargeAttack;
@@ -171,7 +185,6 @@ public class TentaCrabManager : MonoBehaviour
     IEnumerator ChargeWindUpTimer()
     {
         yield return new WaitForSeconds(chargeWindUpTime);
-        Debug.Log("Charge Timer Over");
         headObj.GetComponent<StrobeEffect>().isStrobing = false;
         currentChargeState = ChargeStates.chargeForward;
 

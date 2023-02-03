@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class TentaCrab_Eye : MonoBehaviour
 {
-    public enum EyeStates {eyeWindup,EyeAttack,eyeReturn};
+    public enum EyeStates {eyeWindup,eyeAttack,eyeReturn, eyeIdle};
     public EyeStates currentEyeState;
+
+    public float eyeWindUpTime;
+    public float eyeAttackTime;
 
     public LineRenderer lineRend;
     public Transform stalkPosition;
@@ -20,7 +23,7 @@ public class TentaCrab_Eye : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentEyeState = EyeStates.eyeWindup;
+        currentEyeState = EyeStates.eyeReturn;
         targetPosition = stalkPosition;
     }
 
@@ -32,25 +35,45 @@ public class TentaCrab_Eye : MonoBehaviour
 
 
 
+        EyeAttack_SM();
+
 
     }
 
-    public void EyeAttack()
+    public void EyeAttack_SM()
     {
+
+        switch (currentEyeState)
+        {
+            case EyeStates.eyeWindup:
+                EyesWindUp();
+                break;
+            case EyeStates.eyeAttack:
+                EyesAttack();
+                break;
+            case EyeStates.eyeReturn:
+                EyesReturn();
+                break;
+        }
+
+        MoveToPosition();
         //Eyes move up
         //Eyes move forward
         //Eyes swing around
         //Eyes return
 
-        startEyeAttack();
     }
 
-    public void startEyeAttack()
+    public void StartEyeAttack()
     {
-        ConnectLine();
+        //currentEyeState = EyeStates.eyeWindup;
 
-        if (targetPosition != null)
-            MoveToPosition();
+        //ConnectLine();
+
+        //EyesMoveUp();
+
+        //if (targetPosition != null)
+            //MoveToPosition();
     }
 
     public void ConnectLine()
@@ -77,11 +100,22 @@ public class TentaCrab_Eye : MonoBehaviour
 
     public void MoveToPosition()
     {
+        ConnectLine();
+
         this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition.position, eyeMoveSpeed * Time.deltaTime);
         dstToPos = Vector3.Distance(this.transform.position, targetPosition.position);
         if (dstToPos <= 1f)
         {
-            EyesMoveForward();
+            if(currentEyeState == EyeStates.eyeAttack)
+            {
+                EyesMoveForward();
+
+            }
+            else if (currentEyeState == EyeStates.eyeReturn )
+            {
+                currentEyeState = EyeStates.eyeIdle;
+            }
+
         }
     }
 
@@ -92,14 +126,23 @@ public class TentaCrab_Eye : MonoBehaviour
 
     public void EyesWindUp()
     {
+        EyesMoveUp();
         StartCoroutine(EyesWindUpTimer());
     }
 
     IEnumerator EyesWindUpTimer()
     {
-        yield return new WaitForSeconds(chargeWindUpTime);
-        Debug.Log("Charge Timer Over");
-        currentChargeState = ChargeStates.chargeForward;
+        yield return new WaitForSeconds(eyeWindUpTime);
+        EyesMoveForward();
+        currentEyeState = EyeStates.eyeAttack;
+
+
+    }
+
+    IEnumerator EyesAttackTimer()
+    {
+        yield return new WaitForSeconds(eyeAttackTime);
+        currentEyeState = EyeStates.eyeReturn;
 
     }
 
@@ -108,12 +151,24 @@ public class TentaCrab_Eye : MonoBehaviour
         targetPosition = positions[0];
     }
 
+    public void EyesAttack()
+    {
+        //EyesMoveForward();
+        StartCoroutine(EyesAttackTimer());
+    }
+
     public void EyesMoveForward()
     {
-        //randomly select an attack position
-        int posIndx = Random.Range(0, 4);
+        dstToPos = Vector3.Distance(this.transform.position, targetPosition.position);
+        if (dstToPos <= 1f)
+        {
+            //randomly select an attack position
+            int posIndx = Random.Range(0, 4);
 
-        targetPosition = positions[posIndx];
+            targetPosition = positions[posIndx];
+        }
+
+            
     }
 
     public void EyesSwingAround()
@@ -123,7 +178,7 @@ public class TentaCrab_Eye : MonoBehaviour
 
     public void EyesReturn()
     {
-
+        targetPosition = stalkPosition;
     }
 
 }

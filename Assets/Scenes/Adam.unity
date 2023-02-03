@@ -332,6 +332,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae5f62e6c3ce13499d848d7f03c44fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEyeState: 0
+  eyeWindUpTime: 5
+  eyeAttackTime: 15
   lineRend: {fileID: 33673017}
   stalkPosition: {fileID: 903177330}
   positions:
@@ -2107,8 +2110,8 @@ MonoBehaviour:
   eyeObj1: {fileID: 33673012}
   eyeObj2: {fileID: 2126293340}
   isAttacking: 0
-  attackTime: 0
-  attackCooldownTime: 0
+  attackTime: 10
+  attackCooldownTime: 5
   currentAttackState: 2
   chargeStartPosition: {fileID: 1052776320}
   chargeEndPosition: {fileID: 1501708953}
@@ -2242,6 +2245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae5f62e6c3ce13499d848d7f03c44fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentEyeState: 0
+  eyeWindUpTime: 5
+  eyeAttackTime: 15
   lineRend: {fileID: 2126293345}
   stalkPosition: {fileID: 655755428}
   positions:
