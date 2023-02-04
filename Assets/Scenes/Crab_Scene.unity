@@ -217,8 +217,8 @@ GameObject:
   m_Component:
   - component: {fileID: 33673013}
   - component: {fileID: 33673014}
+  - component: {fileID: 33673019}
   - component: {fileID: 33673015}
-  - component: {fileID: 33673016}
   - component: {fileID: 33673017}
   - component: {fileID: 33673018}
   m_Layer: 0
@@ -321,32 +321,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5625, y: 1.75}
   m_EdgeRadius: 0
---- !u!114 &33673016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33673012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae5f62e6c3ce13499d848d7f03c44fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHeadState: 0
-  headWindUpTime: 2
-  headAttackTime: 8
-  lineRend: {fileID: 33673017}
-  stalkPosition: {fileID: 903177330}
-  positions:
-  - {fileID: 903177330}
-  - {fileID: 290921689}
-  - {fileID: 252961289}
-  - {fileID: 646683614}
-  - {fileID: 1030609923}
-  targetPosition: {fileID: 0}
-  headMoveSpeed: 6
-  dstToPos: 0
 --- !u!120 &33673017
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -466,6 +440,32 @@ MonoBehaviour:
   _knockbackRadius: 0.5
   player: {fileID: 2124446596}
   m_Bones: {fileID: 0}
+--- !u!114 &33673019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33673012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3139b019b8d973b488a88c2aeb5b9b48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHeadState: 0
+  headWindUpTime: 2
+  headAttackTime: 8
+  lineRend: {fileID: 33673017}
+  stalkPosition: {fileID: 903177330}
+  positions:
+  - {fileID: 903177330}
+  - {fileID: 290921689}
+  - {fileID: 252961289}
+  - {fileID: 646683614}
+  - {fileID: 1030609923}
+  targetPosition: {fileID: 0}
+  headMoveSpeed: 6
+  dstToPos: 0
 --- !u!4 &80305078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   clawObj: {fileID: 437694896}
   headObj: {fileID: 33673012}
   crab_Claw_Script: {fileID: 437694901}
-  crab_Head_Script: {fileID: 33673016}
+  crab_Head_Script: {fileID: 0}
   isAttacking: 0
   isCoolingDown: 0
   coroutineRunning: 0
