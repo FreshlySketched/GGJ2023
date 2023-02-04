@@ -36,6 +36,8 @@ public class RabbitBoss : MonoBehaviour
 
     }
 
+
+
     void Telport()
     {
         Transform newPos;
@@ -54,4 +56,8 @@ public class RabbitBoss : MonoBehaviour
         transform.position = newPos.position;
         teleportCountdownStarted = false;
     }
+
+
+
+
 }
