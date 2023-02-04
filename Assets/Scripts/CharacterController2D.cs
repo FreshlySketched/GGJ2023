@@ -32,6 +32,8 @@ public class CharacterController2D : MonoBehaviour
     private bool m_invunFrames = false;
 
     public bool m_Flipped = false;
+
+    Color m_currentColor;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -197,12 +199,13 @@ public class CharacterController2D : MonoBehaviour
     {
         if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
         {
-            //GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + knockbackdistance, -GetComponent<Rigidbody2D>().velocity.y), 10);
             _rb2d.AddForce(new Vector2(knockbackdistance * 4, -_rb2d.velocity.y), ForceMode2D.Impulse);
-            
+            m_currentColor = GetComponent<SpriteRenderer>().color;
+            GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
             _playerHealth.ChangeHealthBar(damage);
             m_invunFrames = true;
             StartCoroutine(InvunCounter());
+            StartCoroutine(ColorCounter());
         }
     }
 
@@ -214,14 +217,17 @@ public class CharacterController2D : MonoBehaviour
         m_dashTimer = false;
     }
 
-
+    IEnumerator ColorCounter()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = m_currentColor;
+    }
 
     IEnumerator InvunCounter()
     {
-        yield return new WaitForSeconds(0.5f);
-        //new Vector2(_rb2d.velocity.x/10, _rb2d.velocity.y);
+        yield return new WaitForSeconds(2.5f);
         m_invunFrames = false;
-
+       
     }
 
 
