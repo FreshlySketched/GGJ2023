@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public int _blockVal;  
+    public float m_blockVal;  
     private Vector3 _shieldSpriteSize;
     [SerializeField] private float _shieldRegenCooldown = 2.5f; // it takes 2.5 seconds for the regeneration to start
     private bool _beenHit = false;
     private bool _regenTick = true;
-    [SerializeField]private int _blockRegenAmount = 5; //effects size regen directly. 10% of this value.
+    
+    public float m_blockRegenAmount = 1f; //effects size regen directly. 10% of this value.
 
     private Coroutine _currentlyRunning;
     private Vector3 _originalShieldSize;
@@ -18,17 +19,19 @@ public class Shield : MonoBehaviour
     private bool m_ShieldPress = false;
 
     public SpriteRenderer shield;
+    [SerializeField]
+    private GameObject m_shield;
     private void Awake() {
-        _shieldSpriteSize = GetComponentInChildren<ShieldObj>().gameObject.transform.localScale;
+        _shieldSpriteSize = m_shield.transform.localScale;
     }
 
-    private void Start() {
-        _blockVal = 100;        
+    private void Start()
+    {
+        m_blockVal = 300;
         _regenTick = true;
-        _originalShieldSize = GetComponentInChildren<ShieldObj>().gameObject.transform.localScale;          
+        _originalShieldSize = m_shield.transform.localScale;
     }
-
-    private void Update()
+        private void Update()
     {
         if (m_ShieldPress)
             shield.enabled = true;
@@ -41,30 +44,30 @@ public class Shield : MonoBehaviour
 
     private void LateUpdate() {        
 
-        if(_blockVal < 200 && !_beenHit && _regenTick)
+        if(m_blockVal < 300 && !_beenHit && _regenTick)
         {
-            _blockVal += _blockRegenAmount;
-            float _sizeRegenAmount = _blockRegenAmount/100f;
+            m_blockVal += m_blockRegenAmount / 100f;
+            float _sizeRegenAmount = m_blockRegenAmount / 100f;
             _shieldSpriteSize += new Vector3 (_sizeRegenAmount, _sizeRegenAmount, _sizeRegenAmount);
             _regenTick = false;
             StartCoroutine(RegenTickTimer());            
         }
-        else if(_blockVal >= 100 || _shieldSpriteSize.x > _originalShieldSize.x)
+        else if(m_blockVal >= 300 || _shieldSpriteSize.x > _originalShieldSize.x)
         {
-            _blockVal = 100;
+            m_blockVal = 300;
             _shieldSpriteSize = _originalShieldSize;
         }
-        else if(_blockVal <= 0 && _beenHit)
+        else if(m_blockVal <= 0 && _beenHit)
         {
             _shieldSpriteSize = Vector3.zero;
-            _blockVal = 0;
+            m_blockVal = 0;
         }
         GetComponentInChildren<ShieldObj>().gameObject.transform.localScale = _shieldSpriteSize;
     }
 
     private void TakeHit(int attackDmg)
     {
-        _blockVal -= attackDmg;
+        m_blockVal -= attackDmg;
         float reductionValue = attackDmg/100f * _originalShieldSize.x;
         ReduceShieldSize(reductionValue);       
     }
@@ -73,19 +76,21 @@ public class Shield : MonoBehaviour
     {
         if(_currentlyRunning != null)
             {StopCoroutine(_currentlyRunning);}
-            
-        _shieldSpriteSize.x -= reductionValue * 2;
-        _shieldSpriteSize.y -= reductionValue * 2;        
+
+        
+        _shieldSpriteSize.x -= reductionValue;
+        _shieldSpriteSize.y -= reductionValue;        
         _currentlyRunning = StartCoroutine(RegenCooldown());                  
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(other.CompareTag("Enemy") && m_ShieldPress)
+       
+        if(collision.gameObject.CompareTag("Enemy") && m_ShieldPress)
         {
             _beenHit = true;
-            int dmg = other.gameObject.GetComponent<DamageDealer>().damage;
+            int dmg = collision.gameObject.GetComponent<DamageDealer>().damage;
             TakeHit(dmg);
         }        
     }
@@ -98,7 +103,7 @@ public class Shield : MonoBehaviour
 
     IEnumerator RegenTickTimer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         _regenTick = true;
     }
 

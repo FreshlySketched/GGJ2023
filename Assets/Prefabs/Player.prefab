@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 3013447350917803580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8124637618555582198}
@@ -460,7 +460,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  _jumpForce: 60
+  _jumpForce: 120
   _moveVelocity: 10
   _playerHealth: {fileID: 0}
   m_interaction: 0
@@ -468,6 +468,7 @@ MonoBehaviour:
   m_shieldButton: 0
   m_Attacked: 0
   m_dashed: 0
+  m_Flipped: 0
 --- !u!114 &4418148528200846918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -480,11 +481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ab88f4874922045925c89fccfb3a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blockVal: 0
+  m_blockVal: 0
   _shieldRegenCooldown: 2.5
-  _blockRegenAmount: 10
+  m_blockRegenAmount: 5
   m_ShieldPress: 0
   shield: {fileID: 3921626559485845419}
+  m_shield: {fileID: 3013447350917803580}
 --- !u!114 &7814719980124683336
 MonoBehaviour:
   m_ObjectHideFlags: 0

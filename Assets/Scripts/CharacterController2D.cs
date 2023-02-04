@@ -183,7 +183,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((_playerShield._blockVal <= 0 || !m_shieldButton) && !m_invunFrames)
+        if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
         {
             if (collision.gameObject.CompareTag("Enemy"))
             {
