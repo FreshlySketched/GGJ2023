@@ -7,8 +7,7 @@ public class TentaCrabManager : MonoBehaviour
 
     public GameObject headObj;
     public GameObject clawObj;
-    public GameObject eyeObj1;
-    public GameObject eyeObj2;
+    public GameObject headObj1;
 
     [Header("CrabScripts")]
     TentaCrab_Claw crab_Claw_Script;
@@ -24,7 +23,7 @@ public class TentaCrabManager : MonoBehaviour
 
     [Header("AttackStates")]
     public AttackStates currentAttackState;
-    public enum AttackStates { clawAttack, eyeAttack, chargeAttack };
+    public enum AttackStates { clawAttack, headAttack, chargeAttack };
 
 
 
@@ -53,8 +52,7 @@ public class TentaCrabManager : MonoBehaviour
         currentChargeState = ChargeStates.chargeWindup;
 
         crab_Claw_Script = FindObjectOfType<TentaCrab_Claw>();
-        crab_Head_Script = eyeObj1.GetComponent<TentaCrab_Head>();
-        //crab_Eye_Script2 = eyeObj2.GetComponent<TentaCrab_Eye>();
+        crab_Head_Script = headObj1.GetComponent<TentaCrab_Head>();
     }
 
     // Update is called once per frame
@@ -120,8 +118,8 @@ public class TentaCrabManager : MonoBehaviour
                 //claw attack
                 ClawAttack_SM();
                 break;
-            case AttackStates.eyeAttack:
-                //eye attack
+            case AttackStates.headAttack:
+                //head attack
                 HeadAttack_SM();
                 break;
             case AttackStates.chargeAttack:
@@ -162,9 +160,8 @@ public class TentaCrabManager : MonoBehaviour
                 currentChargeState = ChargeStates.chargeWindup;
                 break;
             case 1:
-                currentAttackState = AttackStates.eyeAttack;
+                currentAttackState = AttackStates.headAttack;
                 crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headWindup;
-                //crab_Eye_Script2.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
                 break;
             case 2:
                 currentAttackState = AttackStates.chargeAttack;

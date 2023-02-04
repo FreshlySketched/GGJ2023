@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 19e1274e49d5f694f91ff6a13fc1ef08
+guid: 2bac1279b01bc80429f136526fb13233
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -132,10 +132,10 @@ TextureImporter:
       name: Craby Sprite Sheet_0
       rect:
         serializedVersion: 2
-        x: 71
-        y: 650
+        x: 80
+        y: 753
         width: 157
-        height: 281
+        height: 282
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f97f45e839fafb43904372ff3f50aa8
-      internalID: -175823674
+      spriteID: e14dfdcbd1a55634ea48ac509624c7c0
+      internalID: -129432620
       vertices: []
       indices: 
       edges: []
@@ -153,8 +153,8 @@ TextureImporter:
       name: Craby Sprite Sheet_1
       rect:
         serializedVersion: 2
-        x: 282
-        y: 663
+        x: 341
+        y: 762
         width: 174
         height: 283
       alignment: 0
@@ -164,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3cc401b6a660a64f8770e3c6287797b
-      internalID: 723306729
+      spriteID: 832f3b1aeafed81488dbfc21ede4ea0c
+      internalID: -277339104
       vertices: []
       indices: 
       edges: []
@@ -174,10 +174,10 @@ TextureImporter:
       name: Craby Sprite Sheet_2
       rect:
         serializedVersion: 2
-        x: 526
-        y: 673
+        x: 608
+        y: 764
         width: 183
-        height: 273
+        height: 276
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,8 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9292bdb4b350c6641a9381d71956aef9
-      internalID: -723301862
+      spriteID: 4f419542378828b4fbb8ef3cbcb50315
+      internalID: 2134842063
       vertices: []
       indices: 
       edges: []
@@ -195,10 +195,10 @@ TextureImporter:
       name: Craby Sprite Sheet_4
       rect:
         serializedVersion: 2
-        x: 1873
-        y: 705
-        width: 33
-        height: 236
+        x: 895
+        y: 743
+        width: 501
+        height: 452
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,8 +206,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ba21be635ec304429263d3d54274145
-      internalID: 551311252
+      spriteID: a98c2ba9a9d778a4bbc1f729fe6e1099
+      internalID: -936078952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Craby Sprite Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 183
+        width: 423
+        height: 488
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e8b4cb8b57cd44f8540c644b0baa9b
+      internalID: -65649015
       vertices: []
       indices: 
       edges: []
@@ -216,10 +237,10 @@ TextureImporter:
       name: Craby Sprite Sheet_7
       rect:
         serializedVersion: 2
-        x: 783
-        y: 744
-        width: 54
-        height: 70
+        x: 467
+        y: 161
+        width: 277
+        height: 533
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,8 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d26e4dbd38f494649b3deca7869f6e02
-      internalID: 854228695
+      spriteID: c9316512c614f494b8318c33e52c941e
+      internalID: -246711471
       vertices: []
       indices: 
       edges: []
@@ -237,10 +258,10 @@ TextureImporter:
       name: Craby Sprite Sheet_8
       rect:
         serializedVersion: 2
-        x: 853
-        y: 755
-        width: 239
-        height: 55
+        x: 895
+        y: 356
+        width: 418
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -248,8 +269,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 490fb25e9b6679c49b5cac1fb9c3155f
-      internalID: -1467622085
+      spriteID: efd093864a257aa48abd4928dcf9447c
+      internalID: -638914681
       vertices: []
       indices: 
       edges: []
@@ -258,50 +279,8 @@ TextureImporter:
       name: Craby Sprite Sheet_10
       rect:
         serializedVersion: 2
-        x: 1959
-        y: 807
-        width: 35
-        height: 59
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c03e70c35f7cf445bf4cecd0d367e11
-      internalID: 1516324803
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Craby Sprite Sheet_11
-      rect:
-        serializedVersion: 2
-        x: 989
-        y: 275
-        width: 500
-        height: 450
-      alignment: 9
-      pivot: {x: 0.84327126, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4c89b79e24a2c04dbc0b72948173060
-      internalID: -116194171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Craby Sprite Sheet_12
-      rect:
-        serializedVersion: 2
-        x: 1502
-        y: 27
+        x: 1465
+        y: 239
         width: 481
         height: 718
       alignment: 0
@@ -311,20 +290,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 093dc8c5ecc4a9a49a51859b6a28c4b2
-      internalID: -1102447675
+      spriteID: fd35ea8daa9ae1d4ba7177b2aa5ccb2f
+      internalID: -1936644836
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Craby Sprite Sheet_15
+      name: Craby Sprite Sheet_13
       rect:
         serializedVersion: 2
-        x: 13
-        y: 43
-        width: 422
-        height: 487
+        x: 961
+        y: 66
+        width: 35
+        height: 229
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -332,61 +311,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee7b8b67005374a458099172d9db5c7e
-      internalID: 52098754
+      spriteID: 32162cf1804a20e4b909be6edb651635
+      internalID: -1305022331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Craby Sprite Sheet_16
+      name: Craby Sprite Sheet_14
       rect:
         serializedVersion: 2
-        x: 404
-        y: 41
-        width: 277
-        height: 533
-      alignment: 9
-      pivot: {x: 0.22017023, y: 0.85837483}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11ea009b8429d78459bf7b89a036f642
-      internalID: -593457090
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Craby Sprite Sheet_17
-      rect:
-        serializedVersion: 2
-        x: 620
-        y: 330
-        width: 418
-        height: 272
-      alignment: 9
-      pivot: {x: 0.10925687, y: 0.6221317}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 661154fb052902e46b7d0c993a79b8e1
-      internalID: -780250573
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Craby Sprite Sheet_18
-      rect:
-        serializedVersion: 2
-        x: 1753
-        y: 36
-        width: 5
+        x: 1715
+        y: 248
+        width: 6
         height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -395,20 +332,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 987f341eb45f4534f9e243b70047b08e
-      internalID: -2055885083
+      spriteID: 0236c428c9fb39d4e8ccfdc6f120d85e
+      internalID: -1188810875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Craby Sprite Sheet_19
+      name: Craby Sprite Sheet_15
       rect:
         serializedVersion: 2
-        x: 327
-        y: 15
-        width: 6
-        height: 12
+        x: 320
+        y: 148
+        width: 10
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -416,20 +353,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c0b1ccf255a7184e8e022b3b53b9b20
-      internalID: -1567379932
+      spriteID: 6936b6643204cf54b9bf10b79b008e6a
+      internalID: 805543971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Craby Sprite Sheet_20
+      name: Craby Sprite Sheet_16
       rect:
         serializedVersion: 2
-        x: 333
-        y: 7
-        width: 4
-        height: 7
+        x: 1077
+        y: 65
+        width: 35
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -437,8 +374,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e659c0396207b504089a9528f77af2fa
-      internalID: 1513491663
+      spriteID: bca3893e4fb44f64286ff970f2b8cd13
+      internalID: 185361270
       vertices: []
       indices: 
       edges: []
@@ -454,27 +391,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Craby Sprite Sheet_18: -2055885083
-      Craby Sprite Sheet_20: 1513491663
-      Craby Sprite Sheet_3: -770431531
-      Craby Sprite Sheet_13: 1750958890
-      Craby Sprite Sheet_0: -175823674
-      Craby Sprite Sheet_4: 551311252
-      Craby Sprite Sheet_2: -723301862
-      Craby Sprite Sheet_15: 52098754
-      Craby Sprite Sheet_7: 854228695
-      Craby Sprite Sheet_6: 1596587788
-      Craby Sprite Sheet_14: -974361316
-      Craby Sprite Sheet_11: -116194171
-      Craby Sprite Sheet_12: -1102447675
-      Craby Sprite Sheet_16: -593457090
-      Craby Sprite Sheet_5: -358043936
-      Craby Sprite Sheet_1: 723306729
-      Craby Sprite Sheet_17: -780250573
-      Craby Sprite Sheet_9: 821942528
-      Craby Sprite Sheet_10: 1516324803
-      Craby Sprite Sheet_19: -1567379932
-      Craby Sprite Sheet_8: -1467622085
+      Craby Sprite Sheet_3: 396989509
+      Craby Sprite Sheet_13: -1305022331
+      Craby Sprite Sheet_0: -129432620
+      Craby Sprite Sheet_4: -936078952
+      Craby Sprite Sheet_2: 2134842063
+      Craby Sprite Sheet_15: 805543971
+      Craby Sprite Sheet_7: -246711471
+      Craby Sprite Sheet_6: -65649015
+      Craby Sprite Sheet_14: -1188810875
+      Craby Sprite Sheet_11: 1441873434
+      Craby Sprite Sheet_12: 1935457709
+      Craby Sprite Sheet_16: 185361270
+      Craby Sprite Sheet_5: 962918069
+      Craby Sprite Sheet_1: -277339104
+      Craby Sprite Sheet_9: 380474975
+      Craby Sprite Sheet_10: -1936644836
+      Craby Sprite Sheet_8: -638914681
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
