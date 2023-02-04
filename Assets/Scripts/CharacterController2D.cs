@@ -26,13 +26,16 @@ public class CharacterController2D : MonoBehaviour
     public bool m_Attacked = false;
     public bool m_dashed = false;
 
+    [SerializeField] private bool m_inRangeofChatty = false;
+    private DialogueTrigger chattyFellow;
+
     private bool m_dashTimer = false;
 
     private bool m_hasJumped = false;
     private bool m_invunFrames = false;
 
     public bool m_Flipped = false;
-
+    public bool m_invunMove = true;
     Color m_currentColor;
     private void Awake() {
         _controls = new PlayerInputActions();
@@ -45,7 +48,6 @@ public class CharacterController2D : MonoBehaviour
     private void Start() 
     {
         _playerShield = GetComponent<Shield>();
-
         //Subscribe to input events.
         _controls.Player.Attack_1.started += LightAttack;
         _controls.Player.Attack_1.canceled += LightAttack;
@@ -56,14 +58,11 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Interact.canceled += Interact;
         _controls.Player.Jump.performed += Jump;
         _controls.Player.Swap_Weapon.performed += Swap_Weapon;
-
         _controls.Player.Dash.performed += Dash;
-
     }
 
     private void Interact(InputAction.CallbackContext context) 
     {
-
         if (context.started)
             m_interaction = true;
         else if (context.canceled)
@@ -72,7 +71,6 @@ public class CharacterController2D : MonoBehaviour
 
     private void Swap_Weapon(InputAction.CallbackContext context)
     {
-       
         m_weaponChange = true;
     }
 
@@ -80,16 +78,11 @@ public class CharacterController2D : MonoBehaviour
     {
         if (context.started)
             m_Attacked = true;
-        
-
-           
-
     }
 
     private void Dash(InputAction.CallbackContext context)
     {
         m_dashed = true;
-
     }
 
 
@@ -127,6 +120,11 @@ public class CharacterController2D : MonoBehaviour
         if (_playerHealth.currentHealth <= 0)
         {
             //GameManager.Death();
+        }
+
+        if(_controls.Player.Interact.triggered && m_inRangeofChatty)
+        {            
+            chattyFellow.interactionChat.Invoke();
         }
 
         //need to add a face direction
@@ -170,7 +168,7 @@ public class CharacterController2D : MonoBehaviour
             Debug.Log("Has Dashed");
         }
 
-        else if(!m_dashTimer && !m_invunFrames)
+        else if(!m_dashTimer && m_invunMove)
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
 
         else
@@ -204,9 +202,25 @@ public class CharacterController2D : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
             _playerHealth.ChangeHealthBar(damage);
             m_invunFrames = true;
+            m_invunMove = false;
             StartCoroutine(InvunCounter());
             StartCoroutine(ColorCounter());
+            StartCoroutine(InvunMoveCounter());
         }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            m_inRangeofChatty = true;
+            chattyFellow = other.gameObject.GetComponent<DialogueTrigger>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        m_inRangeofChatty = false;
     }
 
     IEnumerator DashTime()
@@ -230,5 +244,11 @@ public class CharacterController2D : MonoBehaviour
        
     }
 
+    IEnumerator InvunMoveCounter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_invunMove = true;
+
+    }
 
 }

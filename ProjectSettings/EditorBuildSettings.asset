@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Crab_Scene.unity
     guid: 35ac58b67064cfa4291c8b4f94285fb6
+  - enabled: 1
+    path: Assets/Scenes/Dylan.unity
+    guid: aae775551885a394f8a8617c15d03f63
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 46bc6bccbff5a804d8e85ce5af9ffc6f, type: 2}
