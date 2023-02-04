@@ -26,10 +26,19 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void LoadScene(int sceneIndex)
+    public void NewScene(int sceneIndex)
     {
         Debug.Log("Now loading scene at build index " + sceneIndex);
+        Setup.NewData();
         SceneManager.LoadScene(sceneIndex);
+        
+    }
+
+    public void LoadScene()
+    {
+        //Debug.Log("Now loading scene at build index " + sceneIndex);
+       
+        SceneManager.LoadScene(Setup.LoadData());
     }
 
     public void ExitGame()

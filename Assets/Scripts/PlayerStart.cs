@@ -52,6 +52,7 @@ public class PlayerStart : MonoBehaviour
             PlayerPrefs.SetInt(i.ToString(), Convert.ToInt32(m_WeaponManger.m_weapons[i].m_hasBeenActivated));
         }
 
+        PlayerPrefs.SetInt("Scene", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
         PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
         PlayerPrefs.SetInt("Bones", m_Health.m_bones);
