@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class DialogueTrigger : MonoBehaviour
 {
     public TMP_Text dialogue;
-    [TextArea] public string textToDisplay;
+    [TextArea] public string proximityText;
+    [TextArea] public string interactText;
     private float t = 0f;
     public float fadeTime = 2.5f;
     private bool _fadeInText = false;
     private bool _fadeOutText = false;
+    public UnityEvent OnInteraction;
 
     private void Start() {
         dialogue.color = new Color (1,1,1,0);
+        OnInteraction.AddListener(InteractionDialogue);
     }
 
     private void OnTriggerEnter2D(Collider2D other) 
@@ -22,7 +26,7 @@ public class DialogueTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {          
             t = 0;
-            dialogue.text = textToDisplay;
+            dialogue.text = proximityText;
             _fadeInText = true;
         }        
     }
@@ -59,6 +63,13 @@ public class DialogueTrigger : MonoBehaviour
                 _fadeOutText = false;
             }
         }
+    }
+
+    private void InteractionDialogue()
+    {
+        dialogue.text = interactText;
+        t = 0;
+        _fadeInText = true;
     }
 
 }

@@ -43,7 +43,11 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
+<<<<<<< Updated upstream
                     ""initialStateCheck"": false
+=======
+                    ""initialStateCheck"": true
+>>>>>>> Stashed changes
                 },
                 {
                     ""name"": "" Attack_1"",

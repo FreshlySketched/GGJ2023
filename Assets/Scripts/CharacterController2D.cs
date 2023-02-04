@@ -11,10 +11,29 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 10f;
     [SerializeField] private float _moveVelocity = 10f;
+<<<<<<< Updated upstream
+=======
+    
+    private bool m_inRangeOfChatty = false;
+   
+    [SerializeField] private Health _playerHealth;
+
+    public bool m_interaction = false;
+    public bool m_weaponChange = true;
+>>>>>>> Stashed changes
 
 
     private Shield _shield;
 
+<<<<<<< Updated upstream
+=======
+    private bool m_dashTimer = false;
+
+    private bool m_hasJumped = false;
+
+    DialogueTrigger m_chattyPerson;
+
+>>>>>>> Stashed changes
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -36,7 +55,22 @@ public class CharacterController2D : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext context) 
     {
+<<<<<<< Updated upstream
         Debug.Log(context.action);
+=======
+
+        if (context.started)
+            m_interaction = true;
+        else if (context.canceled)
+            m_interaction = false;
+
+    }
+
+    private void Swap_Weapon(InputAction.CallbackContext context)
+    {
+       
+        m_weaponChange = true;
+>>>>>>> Stashed changes
     }
     private void LightAttack(InputAction.CallbackContext context) 
     {
@@ -52,11 +86,43 @@ public class CharacterController2D : MonoBehaviour
     }
     private void Jump(InputAction.CallbackContext context) 
     {
+<<<<<<< Updated upstream
         //Debug.Log(context.action);
         if(_grounded)
             {
                 _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
             }
+=======
+        if (!m_hasJumped)
+        {
+            _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
+            m_hasJumped = true;
+            _grounded = false;
+        }
+    }    
+
+    private void Update() {
+
+        _playerShield.CheckShieldPress(m_shieldButton);
+
+
+        if (_playerHealth.currentHealth <= 0)
+        {
+            //GameManager.Death();
+        }
+
+        if (m_inRangeOfChatty)
+        {
+            var talkyFellow = m_chattyPerson;
+            m_inRangeOfChatty = true;
+
+            if(m_interaction) 
+            talkyFellow.OnInteraction.Invoke();
+        }
+
+        //need to add a face direction
+      
+>>>>>>> Stashed changes
     }
     
     
@@ -91,6 +157,41 @@ public class CharacterController2D : MonoBehaviour
         {
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);             
         }
+<<<<<<< Updated upstream
         
+=======
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log(col.gameObject.CompareTag("Enemy"));
+        if(col.gameObject.CompareTag("Enemy")){
+        
+        m_inRangeOfChatty = true;
+        m_chattyPerson = col.gameObject.GetComponent<DialogueTrigger>();
+        }
+        
+    }
+
+    private void OnTriggerExit2D()
+    {
+        m_inRangeOfChatty = false;
+
+    }
+    private void OnTriggerStay2D(Collider2D other) {    
+        
+        
+    }
+
+
+
+
+    IEnumerator DashTime()
+    {
+
+        yield return new WaitForSeconds(0.06f);
+        new Vector2(0f, _rb2d.velocity.y);
+        m_dashTimer = false;
+>>>>>>> Stashed changes
     }
 }

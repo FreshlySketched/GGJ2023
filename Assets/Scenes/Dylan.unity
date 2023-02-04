@@ -192,9 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_health: 100
   damage: 5
   _knockbackRadius: 1.5
   player: {fileID: 0}
+  m_Bones: {fileID: 0}
 --- !u!212 &160705715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -573,7 +575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &727496066
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -839,8 +841,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 1911746575}
-  textToDisplay: Hi Kye, I am testing this script.
+  proximityText: 
+  interactText: 
   fadeTime: 4
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!70 &988286761
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1154,7 +1160,7 @@ GameObject:
   - component: {fileID: 1243808841}
   - component: {fileID: 1243808840}
   - component: {fileID: 1243808839}
-  - component: {fileID: 1243808838}
+  - component: {fileID: 1243808843}
   m_Layer: 7
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -1162,27 +1168,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!50 &1243808838
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243808837}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!60 &1243808839
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1190,7 +1175,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243808837}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1218,14 +1203,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243808837}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_health: 100
   damage: 20
   _knockbackRadius: 0.9
   player: {fileID: 2064172385}
+  m_Bones: {fileID: 0}
 --- !u!212 &1243808841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1286,13 +1273,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243808837}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4, y: -3.433, z: 0}
+  m_LocalPosition: {x: 17.4, y: -3.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1243808843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243808837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61e5c14201e3945aa8f950f0c7751e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  landingTarget: {fileID: 2064172384}
+  journeyTime: 1000
 --- !u!1 &1278895852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1384,7 @@ GameObject:
   - component: {fileID: 1537300837}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1401,8 +1402,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 1911746575}
-  textToDisplay: Hi Lily, I am testing this script.
+  proximityText: Hi Hello
+  interactText: Goodby Cya
   fadeTime: 2.5
+  OnInteraction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!70 &1537300838
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1540,7 +1545,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.78
+  orthographic size: 13.55
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1808,7 +1813,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1767397938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2194,6 +2199,12 @@ MonoBehaviour:
     m_Bits: 64
   _jumpForce: 60
   _moveVelocity: 10
+  _playerHealth: {fileID: 2064172387}
+  m_interaction: 0
+  m_weaponChange: 1
+  m_shieldButton: 0
+  m_Attacked: 0
+  m_dashed: 0
 --- !u!114 &2064172386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2209,6 +2220,8 @@ MonoBehaviour:
   _blockVal: 0
   _shieldRegenCooldown: 2.5
   _blockRegenAmount: 5
+  m_ShieldPress: 0
+  shield: {fileID: 1744601175}
 --- !u!114 &2064172387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2224,3 +2237,4 @@ MonoBehaviour:
   currentHealth: 0
   _maxHealth: 25
   healthbar: {fileID: 329030740}
+  m_bones: 0

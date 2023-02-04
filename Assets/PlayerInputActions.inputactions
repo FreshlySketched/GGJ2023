@@ -21,7 +21,11 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+<<<<<<< Updated upstream
                     "initialStateCheck": false
+=======
+                    "initialStateCheck": true
+>>>>>>> Stashed changes
                 },
                 {
                     "name": " Attack_1",
