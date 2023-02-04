@@ -460,7 +460,7 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  _jumpForce: 120
+  _jumpForce: 180
   _moveVelocity: 10
   _playerHealth: {fileID: 0}
   m_interaction: 0
