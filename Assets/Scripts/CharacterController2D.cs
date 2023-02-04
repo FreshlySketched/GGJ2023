@@ -197,7 +197,8 @@ public class CharacterController2D : MonoBehaviour
     {
         if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
         {
-                _playerHealth.ChangeHealthBar(damage);
+            Debug.Log(damage);    
+            _playerHealth.ChangeHealthBar(damage);
                 m_invunFrames = true;
                 StartCoroutine(InvunCounter());
         }
