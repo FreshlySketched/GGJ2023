@@ -32,7 +32,7 @@ public class CharacterController2D : MonoBehaviour
     private bool m_invunFrames = false;
 
     public bool m_Flipped = false;
-
+    public bool m_invunMove = true;
     Color m_currentColor;
     private void Awake() {
         _controls = new PlayerInputActions();
@@ -170,7 +170,7 @@ public class CharacterController2D : MonoBehaviour
             Debug.Log("Has Dashed");
         }
 
-        else if(!m_dashTimer && !m_invunFrames)
+        else if(!m_dashTimer && m_invunMove)
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
 
         else
@@ -204,8 +204,10 @@ public class CharacterController2D : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
             _playerHealth.ChangeHealthBar(damage);
             m_invunFrames = true;
+            m_invunMove = false;
             StartCoroutine(InvunCounter());
             StartCoroutine(ColorCounter());
+            StartCoroutine(InvunMoveCounter());
         }
     }
 
@@ -230,5 +232,11 @@ public class CharacterController2D : MonoBehaviour
        
     }
 
+    IEnumerator InvunMoveCounter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_invunMove = true;
+
+    }
 
 }
