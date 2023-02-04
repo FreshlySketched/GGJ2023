@@ -26,6 +26,9 @@ public class CharacterController2D : MonoBehaviour
     public bool m_Attacked = false;
     public bool m_dashed = false;
 
+    [SerializeField] private bool m_inRangeofChatty = false;
+    private DialogueTrigger chattyFellow;
+
     private bool m_dashTimer = false;
 
     private bool m_hasJumped = false;
@@ -40,7 +43,6 @@ public class CharacterController2D : MonoBehaviour
     private void Start() 
     {
         _playerShield = GetComponent<Shield>();
-
         //Subscribe to input events.
         _controls.Player.Attack_1.started += LightAttack;
         _controls.Player.Attack_1.canceled += LightAttack;
@@ -51,14 +53,11 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Interact.canceled += Interact;
         _controls.Player.Jump.performed += Jump;
         _controls.Player.Swap_Weapon.performed += Swap_Weapon;
-
         _controls.Player.Dash.performed += Dash;
-
     }
 
     private void Interact(InputAction.CallbackContext context) 
     {
-
         if (context.started)
             m_interaction = true;
         else if (context.canceled)
@@ -67,7 +66,6 @@ public class CharacterController2D : MonoBehaviour
 
     private void Swap_Weapon(InputAction.CallbackContext context)
     {
-       
         m_weaponChange = true;
     }
 
@@ -75,16 +73,11 @@ public class CharacterController2D : MonoBehaviour
     {
         if (context.started)
             m_Attacked = true;
-        
-
-           
-
     }
 
     private void Dash(InputAction.CallbackContext context)
     {
         m_dashed = true;
-
     }
 
 
@@ -122,6 +115,11 @@ public class CharacterController2D : MonoBehaviour
         if (_playerHealth.currentHealth <= 0)
         {
             //GameManager.Death();
+        }
+
+        if(_controls.Player.Interact.triggered && m_inRangeofChatty)
+        {            
+            chattyFellow.interactionChat.Invoke();
         }
 
         //need to add a face direction
@@ -179,7 +177,20 @@ public class CharacterController2D : MonoBehaviour
         {
             _grounded = true;
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            m_inRangeofChatty = true;
+            chattyFellow = other.gameObject.GetComponent<DialogueTrigger>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        m_inRangeofChatty = false;
     }
 
     IEnumerator DashTime()
