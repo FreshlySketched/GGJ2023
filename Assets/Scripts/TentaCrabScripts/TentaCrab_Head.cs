@@ -50,6 +50,7 @@ public class TentaCrab_Head : MonoBehaviour
                 break;
             case HeadStates.headIdle:
                 HeadIdle();
+                Debug.Log("HEAD IDLE");
                 attackComplete = true;
                 break;
         }

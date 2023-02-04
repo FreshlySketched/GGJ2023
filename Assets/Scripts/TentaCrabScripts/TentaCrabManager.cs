@@ -213,7 +213,7 @@ public class TentaCrabManager : MonoBehaviour
         if(headFin == true)
         {
             SwitchAttack();
-            crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headAttack;
+            //crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headAttack;
         }
     }
 
