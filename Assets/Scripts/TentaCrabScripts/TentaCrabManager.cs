@@ -13,12 +13,13 @@ public class TentaCrabManager : MonoBehaviour
     [Header("CrabScripts")]
     TentaCrab_Claw crab_Claw_Script;
     TentaCrab_Eye crab_Eye_Script1;
-    TentaCrab_Eye crab_Eye_Script2;
+    //TentaCrab_Eye crab_Eye_Script2;
     
 
     [Header("AttackVars")]
     public bool isAttacking = false;
     public bool isCoolingDown = false;
+    public bool coroutineRunning = false;
     public float attackTime;
     public float attackCooldownTime;
 
@@ -54,18 +55,19 @@ public class TentaCrabManager : MonoBehaviour
 
         crab_Claw_Script = FindObjectOfType<TentaCrab_Claw>();
         crab_Eye_Script1 = eyeObj1.GetComponent<TentaCrab_Eye>();
-        crab_Eye_Script2 = eyeObj2.GetComponent<TentaCrab_Eye>();
+        //crab_Eye_Script2 = eyeObj2.GetComponent<TentaCrab_Eye>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        RunAttackLogic();
     }
 
     IEnumerator AttackTimer()
     {
         yield return new WaitForSeconds(attackTime);
+        coroutineRunning = false;
         isAttacking = false;
         isCoolingDown = true;
     }
@@ -73,6 +75,7 @@ public class TentaCrabManager : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldownTime);
+        coroutineRunning = false;
         isAttacking = true;
         isCoolingDown = false;
     }
@@ -82,33 +85,30 @@ public class TentaCrabManager : MonoBehaviour
         
     }
 
-    public void Attack()
+    public void RunAttackLogic()
     {
         //we look at our previous attacks and the distance to the player
         //select an attack
         //carry out attack
         //return and wait
 
-        //Create StateMachine Here
+        AttackStateMachine();
 
 
-        if (!isAttacking)
+
+        if (isAttacking && !coroutineRunning)
         {
-            isAttacking = true;
-            StartCoroutine(AttackTimer());
+            coroutineRunning = true;
             AttackStateMachine();
+            //StartCoroutine(AttackTimer());
+            
         }
-        else if(isCoolingDown)
+        else if(isCoolingDown && !coroutineRunning)
         {
-            isCoolingDown = false;
-            StartCoroutine(AttackCooldown());
+            coroutineRunning = true;
+            //StartCoroutine(AttackCooldown());
             //Idle
         }
-        
-
-
-
-
     }
 
     public void AttackStateMachine()
@@ -119,12 +119,11 @@ public class TentaCrabManager : MonoBehaviour
         {
             case AttackStates.clawAttack:
                 //claw attack
-                crab_Claw_Script.startClawAttack();
+                ClawAttack_SM();
                 break;
             case AttackStates.eyeAttack:
                 //eye attack
-                crab_Eye_Script1.EyeAttack_SM();
-                crab_Eye_Script2.EyeAttack_SM();
+                EyeAttack_SM();
                 break;
             case AttackStates.chargeAttack:
                 //charge attack
@@ -166,7 +165,7 @@ public class TentaCrabManager : MonoBehaviour
             case 1:
                 currentAttackState = AttackStates.eyeAttack;
                 crab_Eye_Script1.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
-                crab_Eye_Script2.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
+                //crab_Eye_Script2.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
                 break;
             case 2:
                 currentAttackState = AttackStates.chargeAttack;
@@ -219,18 +218,20 @@ public class TentaCrabManager : MonoBehaviour
 
     public void EyeAttack_SM()
     {
-
-        switch (currentChargeState)
+        bool eye1Fin = crab_Eye_Script1.EyeAttack_SM();
+        if(eye1Fin == true)
         {
-            //case ChargeStates.chargeForward:
-                //
-                //break;
-            //case ChargeStates.chargeReturn:
-                //ChargeReturn();
-                //break;
-
+            SwitchAttack();
         }
+    }
 
+    public void ClawAttack_SM()
+    {
+        bool clawFin = crab_Claw_Script.ClawAttack_SM();
+        if(clawFin == true)
+        {
+            SwitchAttack();
+        }
     }
 
 }

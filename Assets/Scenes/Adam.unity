@@ -333,8 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEyeState: 0
-  eyeWindUpTime: 5
-  eyeAttackTime: 15
+  eyeWindUpTime: 2
+  eyeAttackTime: 6
   lineRend: {fileID: 33673017}
   stalkPosition: {fileID: 903177330}
   positions:
@@ -956,7 +956,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -742034642, guid: 825c26e9c86904f4f889aac80db70a77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1027,6 +1027,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 437694900}
+  currentClawState: 1
+  clawAttackTime: 16
 --- !u!1 &546653913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,13 +2112,15 @@ MonoBehaviour:
   eyeObj1: {fileID: 33673012}
   eyeObj2: {fileID: 2126293340}
   isAttacking: 0
+  isCoolingDown: 0
+  coroutineRunning: 0
   attackTime: 10
   attackCooldownTime: 5
   currentAttackState: 2
   chargeStartPosition: {fileID: 1052776320}
   chargeEndPosition: {fileID: 1501708953}
   chargeWindUpTime: 5
-  chargeAttackTime: 5
+  chargeAttackTime: 3
   chargeSpeed: 20
   returnSpeed: 10
   currentChargeState: 0
@@ -2246,8 +2250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentEyeState: 0
-  eyeWindUpTime: 5
-  eyeAttackTime: 15
+  eyeWindUpTime: 2
+  eyeAttackTime: 6
   lineRend: {fileID: 2126293345}
   stalkPosition: {fileID: 655755428}
   positions:

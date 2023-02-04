@@ -40,8 +40,9 @@ public class TentaCrab_Eye : MonoBehaviour
 
     }
 
-    public void EyeAttack_SM()
+    public bool EyeAttack_SM()
     {
+        bool attackComplete = false;
 
         switch (currentEyeState)
         {
@@ -54,14 +55,15 @@ public class TentaCrab_Eye : MonoBehaviour
             case EyeStates.eyeReturn:
                 EyesReturn();
                 break;
+            case EyeStates.eyeIdle:
+                EyeIdle();
+                attackComplete = true;
+                break;
         }
 
         MoveToPosition();
-        //Eyes move up
-        //Eyes move forward
-        //Eyes swing around
-        //Eyes return
 
+        return attackComplete;
     }
 
     public void StartEyeAttack()
@@ -179,6 +181,11 @@ public class TentaCrab_Eye : MonoBehaviour
     public void EyesReturn()
     {
         targetPosition = stalkPosition;
+    }
+
+    public void EyeIdle()
+    {
+
     }
 
 }
