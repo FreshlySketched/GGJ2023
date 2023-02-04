@@ -23,14 +23,14 @@ public class TentaCrab_Head : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHeadState = HeadStates.headReturn;
+        currentHeadState = HeadStates.headWindup;
         targetPosition = stalkPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        HeadAttack_SM();
+        //HeadAttack_SM();
     }
 
     public bool HeadAttack_SM()
@@ -50,7 +50,6 @@ public class TentaCrab_Head : MonoBehaviour
                 break;
             case HeadStates.headIdle:
                 HeadIdle();
-                Debug.Log("HEAD IDLE");
                 attackComplete = true;
                 break;
         }
