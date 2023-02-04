@@ -236,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33673012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.77, y: 1.79, z: 0}
+  m_LocalPosition: {x: -0.69, y: 1.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,9 +362,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -466,6 +464,7 @@ MonoBehaviour:
   targetPosition: {fileID: 0}
   headMoveSpeed: 6
   dstToPos: 0
+  segmentDst: 5
 --- !u!4 &80305078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
@@ -2498,7 +2497,7 @@ MonoBehaviour:
   coroutineRunning: 0
   attackTime: 10
   attackCooldownTime: 5
-  currentAttackState: 2
+  currentAttackState: 1
   chargeStartPosition: {fileID: 1052776320}
   chargeEndPosition: {fileID: 1501708953}
   chargeWindUpTime: 5
