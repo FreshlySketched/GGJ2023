@@ -187,7 +187,6 @@ public class CharacterController2D : MonoBehaviour
         {
             _grounded = true;
         }
-    }
 
         if (m_hasJumped)
             _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
