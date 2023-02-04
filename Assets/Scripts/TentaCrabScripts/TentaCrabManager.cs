@@ -5,13 +5,13 @@ using UnityEngine;
 public class TentaCrabManager : MonoBehaviour
 {
 
-    public GameObject headObj;
+    public GameObject bodyObj;
     public GameObject clawObj;
-    public GameObject headObj1;
+    public GameObject headObj;
 
     [Header("CrabScripts")]
-    TentaCrab_Claw crab_Claw_Script;
-    TentaCrab_Head crab_Head_Script;
+    public TentaCrab_Claw crab_Claw_Script;
+    public TentaCrab_Head crab_Head_Script;
     
 
     [Header("AttackVars")]
@@ -47,7 +47,7 @@ public class TentaCrabManager : MonoBehaviour
         currentChargeState = ChargeStates.chargeWindup;
 
         crab_Claw_Script = FindObjectOfType<TentaCrab_Claw>();
-        crab_Head_Script = headObj1.GetComponent<TentaCrab_Head>();
+        crab_Head_Script = headObj.GetComponent<TentaCrab_Head>();
     }
 
     // Update is called once per frame
@@ -168,14 +168,14 @@ public class TentaCrabManager : MonoBehaviour
 
     public void ChargeWindup()
     {
-        headObj.GetComponent<StrobeEffect>().isStrobing = true;
+        bodyObj.GetComponent<StrobeEffect>().isStrobing = true;
         StartCoroutine(ChargeWindUpTimer());
     }
 
     IEnumerator ChargeWindUpTimer()
     {
         yield return new WaitForSeconds(chargeWindUpTime);
-        headObj.GetComponent<StrobeEffect>().isStrobing = false;
+        bodyObj.GetComponent<StrobeEffect>().isStrobing = false;
         currentChargeState = ChargeStates.chargeForward;
 
     }
@@ -213,6 +213,7 @@ public class TentaCrabManager : MonoBehaviour
         if(headFin == true)
         {
             SwitchAttack();
+            crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headAttack;
         }
     }
 
@@ -222,6 +223,7 @@ public class TentaCrabManager : MonoBehaviour
         if(clawFin == true)
         {
             SwitchAttack();
+            crab_Claw_Script.currentClawState = TentaCrab_Claw.ClawStates.clawAttack;
         }
     }
 

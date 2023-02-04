@@ -60,6 +60,7 @@ public class TentaCrab_Claw : MonoBehaviour
 
     public void EndClawAttack()
     {
+        currentClawState = ClawStates.clawAttack;
         animator.SetBool("isClawAttack", false);
     }
 }
