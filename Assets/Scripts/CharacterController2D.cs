@@ -181,28 +181,26 @@ public class CharacterController2D : MonoBehaviour
         m_Attacked = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                //float damage = 0;
-                //damage -= other.gameObject.GetComponent<DamageDealer>().damage;
-              
-                _playerHealth.ChangeHealthBar(collision.gameObject.GetComponent<DamageDealer>().damage);
-                m_invunFrames = true;
-                StartCoroutine(InvunCounter());
-            }
-        }
-
-        if(collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6)
         {
             _grounded = true;
         }
 
-        if(m_hasJumped)
+        if (m_hasJumped)
             _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
+    }
+
+
+    public void CheckHit(int damage)
+    {
+        if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
+        {
+                _playerHealth.ChangeHealthBar(damage);
+                m_invunFrames = true;
+                StartCoroutine(InvunCounter());
+        }
     }
 
     IEnumerator DashTime()

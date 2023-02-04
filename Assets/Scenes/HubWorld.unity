@@ -378,6 +378,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7814719979760671620, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814719979760671620, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: _playerHealth
       value: 
       objectReference: {fileID: 638185401}
@@ -2022,7 +2026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_LocalPosition.x

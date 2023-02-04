@@ -26,14 +26,15 @@ public class DamageDealer : MonoBehaviour
 
     private void FixedUpdate() {
 
-        if(mask != 0)
-        {        
-        Collider2D checkRadius = Physics2D.OverlapCircle(transform.position, _knockbackRadius);
-            if(checkRadius)
-            {
-                //fix this... it goes the wrong way. 
-                player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(player.gameObject.transform.position, -transform.position, 10);
-            }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer == 8)
+        {
+            collision.GetComponent<CharacterController2D>().CheckHit(damage);
+            player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(player.gameObject.transform.position, -transform.position, 10);
         }
-    }  
+    }
 }
