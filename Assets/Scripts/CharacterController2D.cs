@@ -32,6 +32,11 @@ public class CharacterController2D : MonoBehaviour
     private bool m_dashTimer = false;
 
     private bool m_hasJumped = false;
+    private bool m_invunFrames = false;
+
+    public bool m_Flipped = false;
+    public bool m_invunMove = true;
+    Color m_currentColor;
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
@@ -130,13 +135,25 @@ public class CharacterController2D : MonoBehaviour
     {
         //_grounded = false;   
         float move = _controls.Player.Move.ReadValue<float>();
-        //Debug.Log(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround));
-       // if(Physics2D.OverlapCircle(transform.position, _groundCheckRadius, _whatIsGround))
-       // {
-            
-       //}
 
-        if(_grounded)
+
+        if (move < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            m_Flipped = false;
+        }
+        else if (move > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+            m_Flipped = true;
+        }
+        //Debug.Log(Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _whatIsGround));
+        // if(Physics2D.OverlapCircle(transform.position, _groundCheckRadius, _whatIsGround))
+        // {
+
+        //} 
+
+        if (_grounded)
         {
             m_hasJumped = false;
         }        
@@ -144,15 +161,18 @@ public class CharacterController2D : MonoBehaviour
 
         if (m_dashed)
         {
-            _rb2d.AddForce(new Vector2(move * 200, 0.0f), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(move * 50, 0.0f), ForceMode2D.Impulse);
             m_dashed = false;
             m_dashTimer = true;
             StartCoroutine(DashTime());
             Debug.Log("Has Dashed");
         }
 
-        else if(!m_dashTimer)
+        else if(!m_dashTimer && m_invunMove)
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
+
+        else
+            _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
     }
 
     private void LateUpdate()
@@ -161,24 +181,34 @@ public class CharacterController2D : MonoBehaviour
         m_Attacked = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_playerShield._blockVal <= 0 || !m_shieldButton)
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                //float damage = 0;
-                //damage -= other.gameObject.GetComponent<DamageDealer>().damage;
-                _playerHealth.ChangeHealthBar(collision.gameObject.GetComponent<DamageDealer>().damage);
-            }
-        }
-
-        if(collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6)
         {
             _grounded = true;
         }
+
+        if (m_hasJumped)
+            _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
     }
 
+
+    public void CheckHit(int damage, int knockbackdistance)
+    {
+        if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
+        {
+            _rb2d.AddForce(new Vector2(knockbackdistance * 4, -_rb2d.velocity.y), ForceMode2D.Impulse);
+            m_currentColor = GetComponent<SpriteRenderer>().color;
+            GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
+            _playerHealth.ChangeHealthBar(damage);
+            m_invunFrames = true;
+            m_invunMove = false;
+            StartCoroutine(InvunCounter());
+            StartCoroutine(ColorCounter());
+            StartCoroutine(InvunMoveCounter());
+        }
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
@@ -200,4 +230,25 @@ public class CharacterController2D : MonoBehaviour
         new Vector2(0f, _rb2d.velocity.y);
         m_dashTimer = false;
     }
+
+    IEnumerator ColorCounter()
+    {
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = m_currentColor;
+    }
+
+    IEnumerator InvunCounter()
+    {
+        yield return new WaitForSeconds(2.5f);
+        m_invunFrames = false;
+       
+    }
+
+    IEnumerator InvunMoveCounter()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_invunMove = true;
+
+    }
+
 }

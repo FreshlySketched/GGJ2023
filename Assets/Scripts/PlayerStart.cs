@@ -39,8 +39,8 @@ public class PlayerStart : MonoBehaviour
 
         m_Health.currentHealth = PlayerPrefs.GetFloat("Health");
         m_Health.m_bones = PlayerPrefs.GetInt("Bones");
-
-        if(GameObject.FindGameObjectWithTag("Alter") != null)
+        m_Health.healthbar.value = PlayerPrefs.GetFloat("Health");
+        if (GameObject.FindGameObjectWithTag("Alter") != null)
             GameObject.FindGameObjectWithTag("Alter").GetComponent<Alter>().m_totalBones = PlayerPrefs.GetInt("TotalBones");
     }
 

@@ -13,6 +13,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private CharacterController2D controller;
 
+    private bool m_weaponFlipped = true;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,12 @@ public class WeaponManager : MonoBehaviour
             ChangeWeapon();
         }
         AttackWithWeapon();
+
+        if (m_weaponFlipped != controller.m_Flipped)
+        {
+            m_currentWeapon.FlipWeapon(controller.m_Flipped);
+            m_weaponFlipped = controller.m_Flipped;
+        }
     }
 
     public void ChangeWeapon()

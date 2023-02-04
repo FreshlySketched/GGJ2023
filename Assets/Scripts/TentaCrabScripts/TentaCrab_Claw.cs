@@ -6,6 +6,11 @@ public class TentaCrab_Claw : MonoBehaviour
 {
     public Animator animator;
 
+    public enum ClawStates { clawWindup, clawAttack, clawIdle };
+    public ClawStates currentClawState;
+
+    public float clawAttackTime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +23,44 @@ public class TentaCrab_Claw : MonoBehaviour
         
     }
 
-    public void startClawAttack()
+    public bool ClawAttack_SM()
     {
-        animator.SetBool("isClawAttack", true);
+        bool attackComplete = false;
+
+        switch (currentClawState)
+        {
+            case ClawStates.clawAttack:
+                StartClawAttack();
+                break;
+            case ClawStates.clawIdle:
+                EndClawAttack();
+                attackComplete = true;
+                break;
+        }
+
+        return attackComplete;
     }
 
-    public void endClawAttack()
+    IEnumerator ClawAttackTimer()
     {
+        yield return new WaitForSeconds(clawAttackTime);
+        animator.SetBool("isClawAttack", false);
+        currentClawState = ClawStates.clawIdle;
+
+    }
+
+    public void StartClawAttack()
+    {
+
+        animator.SetBool("isClawAttack", true);
+        currentClawState = ClawStates.clawAttack;
+        StartCoroutine(ClawAttackTimer());
+
+    }
+
+    public void EndClawAttack()
+    {
+        currentClawState = ClawStates.clawAttack;
         animator.SetBool("isClawAttack", false);
     }
 }

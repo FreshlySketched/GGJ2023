@@ -4,34 +4,43 @@ public class DamageDealer : MonoBehaviour
 {
     public int m_health = 100;
     public int damage = 5;
-    LayerMask mask;
+    public LayerMask mask;
     [SerializeField] private float _knockbackRadius = 0.5f; 
     private bool _playerInKnockback;
     public CharacterController2D player;
     public GameObject m_Bones;
     private void Start() {
-        mask = LayerMask.GetMask("Player");
+        //mask = LayerMask.GetMask("Player");
     }
 
     private void Update()
     {
         if (m_health == 0)
         {
-            Instantiate(m_Bones, transform.position,transform.rotation);
+            if(m_Bones != null) 
+                Instantiate(m_Bones, transform.position,transform.rotation);
+            
             Destroy(gameObject);
         }
     }
 
     private void FixedUpdate() {
 
-        if(mask != 0)
-        {        
-        Collider2D checkRadius = Physics2D.OverlapCircle(transform.position, _knockbackRadius, mask);
-            if(checkRadius)
-            {
-                //fix this... it goes the wrong way. 
-                player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(player.gameObject.transform.position, -transform.position, 10);
-            }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer == 8)
+        {
+            int knockbackPos = 0;
+            
+            if (collision.gameObject.transform.position.x < transform.position.x)
+                knockbackPos = -10;
+            else
+                knockbackPos = 10;
+
+            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
         }
-    }  
+    }
 }

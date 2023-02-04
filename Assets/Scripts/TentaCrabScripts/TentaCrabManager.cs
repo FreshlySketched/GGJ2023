@@ -5,96 +5,102 @@ using UnityEngine;
 public class TentaCrabManager : MonoBehaviour
 {
 
-    public GameObject headObj;
+    public GameObject bodyObj;
     public GameObject clawObj;
-    public GameObject eyeObj1;
-    public GameObject eyeObj2;
+    public GameObject headObj;
 
     [Header("CrabScripts")]
-    TentaCrab_Claw crab_Claw_Script;
-    TentaCrab_Eye crab_Eye_Script1;
-    TentaCrab_Eye crab_Eye_Script2;
+    public TentaCrab_Claw crab_Claw_Script;
+    public TentaCrab_Head crab_Head_Script;
     
 
     [Header("AttackVars")]
-    public bool isAttacking;
+    public bool isAttacking = false;
+    public bool isCoolingDown = false;
+    public bool coroutineRunning = false;
     public float attackTime;
     public float attackCooldownTime;
 
     [Header("AttackStates")]
     public AttackStates currentAttackState;
-    public enum AttackStates { clawAttack, eyeAttack, chargeAttack };
+    public enum AttackStates { clawAttack, headAttack, chargeAttack };
 
 
 
     [Header ("Charge Attack Vars")]
     public Transform chargeStartPosition;
     public Transform chargeEndPosition;
+    public float chargeWindUpTime;
+    public float chargeAttackTime;
     public float chargeSpeed;
     public float returnSpeed;
 
     [Header("ChargeStates")]
     public ChargeStates currentChargeState;
-    public enum ChargeStates { chargeForward, chargeReturn };
-
-
-    
-
-
+    public enum ChargeStates { chargeWindup, chargeForward, chargeReturn };
 
 
     // Start is called before the first frame update
     void Start()
     {
         //Attack();
-        currentChargeState = ChargeStates.chargeForward;
+        currentChargeState = ChargeStates.chargeWindup;
 
         crab_Claw_Script = FindObjectOfType<TentaCrab_Claw>();
-        crab_Eye_Script1 = eyeObj1.GetComponent<TentaCrab_Eye>();
-        crab_Eye_Script2 = eyeObj2.GetComponent<TentaCrab_Eye>();
+        crab_Head_Script = headObj.GetComponent<TentaCrab_Head>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        RunAttackLogic();
     }
 
     IEnumerator AttackTimer()
     {
         yield return new WaitForSeconds(attackTime);
+        coroutineRunning = false;
         isAttacking = false;
+        isCoolingDown = true;
     }
 
     IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(attackCooldownTime);
+        coroutineRunning = false;
         isAttacking = true;
+        isCoolingDown = false;
     }
 
-    public void Attack()
+    public void BeginAttack()
+    {
+        
+    }
+
+    public void RunAttackLogic()
     {
         //we look at our previous attacks and the distance to the player
         //select an attack
         //carry out attack
         //return and wait
 
-        //Create StateMachine Here
+        AttackStateMachine();
 
 
-        if (isAttacking)
+
+        if (isAttacking && !coroutineRunning)
         {
+            coroutineRunning = true;
             AttackStateMachine();
+            //StartCoroutine(AttackTimer());
+            
         }
-        else
+        else if(isCoolingDown && !coroutineRunning)
         {
+            coroutineRunning = true;
+            //StartCoroutine(AttackCooldown());
             //Idle
         }
-        
-
-
-
-
     }
 
     public void AttackStateMachine()
@@ -105,12 +111,11 @@ public class TentaCrabManager : MonoBehaviour
         {
             case AttackStates.clawAttack:
                 //claw attack
-                crab_Claw_Script.startClawAttack();
+                ClawAttack_SM();
                 break;
-            case AttackStates.eyeAttack:
-                //eye attack
-                crab_Eye_Script1.startEyeAttack();
-                crab_Eye_Script2.startEyeAttack();
+            case AttackStates.headAttack:
+                //head attack
+                HeadAttack_SM();
                 break;
             case AttackStates.chargeAttack:
                 //charge attack
@@ -125,6 +130,9 @@ public class TentaCrabManager : MonoBehaviour
 
         switch (currentChargeState)
         {
+            case ChargeStates.chargeWindup:
+                ChargeWindup();
+                break;
             case ChargeStates.chargeForward:
                 ChargeForward();
                 break;
@@ -135,6 +143,43 @@ public class TentaCrabManager : MonoBehaviour
         }
 
     }
+
+    public void SwitchAttack()
+    {
+        int attackIndex = Random.Range(0, 3);
+
+        switch (attackIndex)
+        {
+            case 0:
+                currentAttackState = AttackStates.clawAttack;
+                currentChargeState = ChargeStates.chargeWindup;
+                break;
+            case 1:
+                currentAttackState = AttackStates.headAttack;
+                crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headWindup;
+                break;
+            case 2:
+                currentAttackState = AttackStates.chargeAttack;
+                break;
+        }
+    }
+
+
+
+    public void ChargeWindup()
+    {
+        bodyObj.GetComponent<StrobeEffect>().isStrobing = true;
+        StartCoroutine(ChargeWindUpTimer());
+    }
+
+    IEnumerator ChargeWindUpTimer()
+    {
+        yield return new WaitForSeconds(chargeWindUpTime);
+        bodyObj.GetComponent<StrobeEffect>().isStrobing = false;
+        currentChargeState = ChargeStates.chargeForward;
+
+    }
+
 
     public void ChargeForward()
     {
@@ -155,25 +200,31 @@ public class TentaCrabManager : MonoBehaviour
         float dstToPos = Vector3.Distance(this.transform.position, chargeStartPosition.position);
         if (dstToPos <= 1f)
         {
-            currentChargeState = ChargeStates.chargeForward;
-            ChargeForward();
+            SwitchAttack();
+
+            //currentChargeState = ChargeStates.chargeForward;
+            //ChargeForward();
         }
     }
 
-    public void EyeAttack_SM()
+    public void HeadAttack_SM()
     {
-
-        switch (currentChargeState)
+        bool headFin = crab_Head_Script.HeadAttack_SM();
+        if(headFin == true)
         {
-            case ChargeStates.chargeForward:
-                //
-                break;
-            case ChargeStates.chargeReturn:
-                //ChargeReturn();
-                break;
-
+            SwitchAttack();
+            //crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headAttack;
         }
+    }
 
+    public void ClawAttack_SM()
+    {
+        bool clawFin = crab_Claw_Script.ClawAttack_SM();
+        if(clawFin == true)
+        {
+            SwitchAttack();
+            crab_Claw_Script.currentClawState = TentaCrab_Claw.ClawStates.clawAttack;
+        }
     }
 
 }
