@@ -12,8 +12,7 @@ public class TentaCrabManager : MonoBehaviour
 
     [Header("CrabScripts")]
     TentaCrab_Claw crab_Claw_Script;
-    TentaCrab_Eye crab_Eye_Script1;
-    //TentaCrab_Eye crab_Eye_Script2;
+    TentaCrab_Head crab_Head_Script;
     
 
     [Header("AttackVars")]
@@ -54,7 +53,7 @@ public class TentaCrabManager : MonoBehaviour
         currentChargeState = ChargeStates.chargeWindup;
 
         crab_Claw_Script = FindObjectOfType<TentaCrab_Claw>();
-        crab_Eye_Script1 = eyeObj1.GetComponent<TentaCrab_Eye>();
+        crab_Head_Script = eyeObj1.GetComponent<TentaCrab_Head>();
         //crab_Eye_Script2 = eyeObj2.GetComponent<TentaCrab_Eye>();
     }
 
@@ -123,7 +122,7 @@ public class TentaCrabManager : MonoBehaviour
                 break;
             case AttackStates.eyeAttack:
                 //eye attack
-                EyeAttack_SM();
+                HeadAttack_SM();
                 break;
             case AttackStates.chargeAttack:
                 //charge attack
@@ -164,7 +163,7 @@ public class TentaCrabManager : MonoBehaviour
                 break;
             case 1:
                 currentAttackState = AttackStates.eyeAttack;
-                crab_Eye_Script1.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
+                crab_Head_Script.currentHeadState = TentaCrab_Head.HeadStates.headWindup;
                 //crab_Eye_Script2.currentEyeState = TentaCrab_Eye.EyeStates.eyeWindup;
                 break;
             case 2:
@@ -216,10 +215,10 @@ public class TentaCrabManager : MonoBehaviour
         }
     }
 
-    public void EyeAttack_SM()
+    public void HeadAttack_SM()
     {
-        bool eye1Fin = crab_Eye_Script1.EyeAttack_SM();
-        if(eye1Fin == true)
+        bool headFin = crab_Head_Script.HeadAttack_SM();
+        if(headFin == true)
         {
             SwitchAttack();
         }
