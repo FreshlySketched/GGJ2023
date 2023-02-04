@@ -6,21 +6,21 @@ public class RabbitBoss : MonoBehaviour
 {
     public CharacterController2D player;
     public Transform[] telportLocations;
-    public bool teleportCountdownStarted = true;
+    public bool teleportCountdownStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = telportLocations[0].position;
+        Telport();
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(Vector3.Distance(player.transform.position, transform.position) < 12 && teleportCountdownStarted)
+        if(Vector3.Distance(player.transform.position, transform.position) < 12 && !teleportCountdownStarted)
         {
-            teleportCountdownStarted = false;
+            teleportCountdownStarted = true;
             StartCoroutine(TeleportCountdown());
 
         }
@@ -39,12 +39,19 @@ public class RabbitBoss : MonoBehaviour
     void Telport()
     {
         Transform newPos;
+        bool isNewLocation;
+        
+        do
+        {
+            newPos = telportLocations[Random.Range(0, telportLocations.Length)];
+            if (newPos.position == transform.position)
+                isNewLocation = false;
+            else
+                isNewLocation = true;
+        
+        } while (!isNewLocation);
 
-        if()
-            Random.Range(0, telportLocations.Length - 1);
-
-
-
-
+        transform.position = newPos.position;
+        teleportCountdownStarted = false;
     }
 }
