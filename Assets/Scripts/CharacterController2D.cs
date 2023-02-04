@@ -161,14 +161,14 @@ public class CharacterController2D : MonoBehaviour
 
         if (m_dashed)
         {
-            _rb2d.AddForce(new Vector2(move * 200, 0.0f), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(move * 50, 0.0f), ForceMode2D.Impulse);
             m_dashed = false;
             m_dashTimer = true;
             StartCoroutine(DashTime());
             Debug.Log("Has Dashed");
         }
 
-        else if(!m_dashTimer)
+        else if(!m_dashTimer && !m_invunFrames)
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
 
         else
@@ -193,14 +193,16 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void CheckHit(int damage)
+    public void CheckHit(int damage, int knockbackdistance)
     {
         if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
         {
-            Debug.Log(damage);    
+            //GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + knockbackdistance, -GetComponent<Rigidbody2D>().velocity.y), 10);
+            _rb2d.AddForce(new Vector2(knockbackdistance * 4, -_rb2d.velocity.y), ForceMode2D.Impulse);
+            
             _playerHealth.ChangeHealthBar(damage);
-                m_invunFrames = true;
-                StartCoroutine(InvunCounter());
+            m_invunFrames = true;
+            StartCoroutine(InvunCounter());
         }
     }
 
@@ -212,9 +214,12 @@ public class CharacterController2D : MonoBehaviour
         m_dashTimer = false;
     }
 
+
+
     IEnumerator InvunCounter()
     {
         yield return new WaitForSeconds(0.5f);
+        //new Vector2(_rb2d.velocity.x/10, _rb2d.velocity.y);
         m_invunFrames = false;
 
     }

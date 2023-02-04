@@ -33,8 +33,14 @@ public class DamageDealer : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer == 8)
         {
-            collision.GetComponent<CharacterController2D>().CheckHit(damage);
-            player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.MoveTowards(player.gameObject.transform.position, -transform.position, 10);
+            int knockbackPos = 0;
+            
+            if (collision.gameObject.transform.position.x < transform.position.x)
+                knockbackPos = -10;
+            else
+                knockbackPos = 10;
+
+            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
         }
     }
 }
