@@ -8,6 +8,7 @@ public class Alter : MonoBehaviour
 {
     public TextMeshPro textbox;
     public int m_totalBones = 0;
+    public GameObject finalDoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class Alter : MonoBehaviour
 
             if (m_totalBones == 2)
             {
-
+                finalDoor.SetActive(true);
 
             }
 

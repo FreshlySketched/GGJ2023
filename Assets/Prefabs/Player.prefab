@@ -468,7 +468,9 @@ MonoBehaviour:
   m_shieldButton: 0
   m_Attacked: 0
   m_dashed: 0
+  m_inRangeofChatty: 0
   m_Flipped: 0
+  m_invunMove: 1
 --- !u!114 &4418148528200846918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a1490823c487649ab65a6dcd8614cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
+  currentHealth: 100
   _maxHealth: 100
   healthbar: {fileID: 0}
   m_bones: 0
