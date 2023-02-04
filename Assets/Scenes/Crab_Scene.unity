@@ -437,7 +437,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  _knockbackRadius: 0.5
   player: {fileID: 2124446596}
   m_Bones: {fileID: 0}
 --- !u!114 &33673019
@@ -765,7 +764,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  _knockbackRadius: 0.5
   player: {fileID: 2124446596}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
 --- !u!1 &341700288
@@ -1051,7 +1049,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
-  _knockbackRadius: 0.5
   player: {fileID: 2124446596}
   m_Bones: {fileID: 0}
 --- !u!1 &546653913
@@ -1806,6 +1803,10 @@ PrefabInstance:
     - target: {fileID: 1775253231986183241, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_doorNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1775253231986183241, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
+      propertyPath: m_sceneNumber
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name

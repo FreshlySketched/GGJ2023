@@ -1081,7 +1081,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
-  _knockbackRadius: 0.5
   player: {fileID: 638185404}
   m_Bones: {fileID: 0}
 --- !u!61 &948217416
@@ -1373,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183241, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_sceneNumber
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name
@@ -1725,7 +1724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183241, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_sceneNumber
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name
@@ -2110,7 +2109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183241, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_sceneNumber
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name
