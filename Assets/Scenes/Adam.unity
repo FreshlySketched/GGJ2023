@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 33673015}
   - component: {fileID: 33673016}
   - component: {fileID: 33673017}
+  - component: {fileID: 33673018}
   m_Layer: 0
   m_Name: Tentacrab_Eye1
   m_TagString: Untagged
@@ -444,6 +445,26 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &33673018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33673012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 200000
+  damage: 20
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
+  _knockbackRadius: 0.5
+  player: {fileID: 2124446596}
+  m_Bones: {fileID: 0}
 --- !u!4 &80305078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
@@ -783,7 +804,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 300
-  damage: 50
+  damage: 20
   mask:
     serializedVersion: 2
     m_Bits: 256
@@ -1069,7 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 200000
-  damage: 50
+  damage: 20
   mask:
     serializedVersion: 2
     m_Bits: 256
@@ -1469,6 +1490,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1606912540}
+    - target: {fileID: -4312320023732180031, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
+      propertyPath: currentHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4150589733170806418, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2599,6 +2624,7 @@ GameObject:
   - component: {fileID: 2126293343}
   - component: {fileID: 2126293344}
   - component: {fileID: 2126293345}
+  - component: {fileID: 2126293346}
   m_Layer: 0
   m_Name: Tentacrab_Eye2
   m_TagString: Untagged
@@ -2823,3 +2849,23 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &2126293346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126293340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 200000
+  damage: 20
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
+  _knockbackRadius: 0.5
+  player: {fileID: 2124446596}
+  m_Bones: {fileID: 0}

@@ -42,11 +42,6 @@ public class TentaCrabManager : MonoBehaviour
     public enum ChargeStates { chargeWindup, chargeForward, chargeReturn };
 
 
-    
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
