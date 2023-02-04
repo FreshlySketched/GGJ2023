@@ -48,6 +48,6 @@ public class DamageDealer : MonoBehaviour
 
     private void OnDestroy()
     {
-        //if()
+        Destroy(transform.root.gameObject);
     }
 }
