@@ -28,7 +28,12 @@ public class Alter : MonoBehaviour
             textbox.text = m_totalBones.ToString() + "/3";
 
             collision.gameObject.GetComponent<Health>().m_bones = 0;
-           
+
+            if (m_totalBones == 2)
+            {
+
+
+            }
 
             if (m_totalBones >= 3)
             {
