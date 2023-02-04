@@ -440,6 +440,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_health: 100
   damage: 20
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
   _knockbackRadius: 0.9
   player: {fileID: 1745164184}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
