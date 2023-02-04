@@ -24,7 +24,9 @@ public class DamageDealer : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
+
+    private void FixedUpdate() 
+    {
 
     }
 
@@ -42,5 +44,10 @@ public class DamageDealer : MonoBehaviour
 
             collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
         }
+    }
+
+    private void OnDestroy()
+    {
+        //if()
     }
 }
