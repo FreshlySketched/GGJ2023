@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+using UnityEngine.SceneManagement;
 
 public class CharacterController2D : MonoBehaviour
 {
@@ -61,6 +62,7 @@ public class CharacterController2D : MonoBehaviour
         _controls.Player.Interact.canceled += Interact;
         _controls.Player.Jump.performed += Jump;
         _controls.Player.Swap_Weapon.performed += Swap_Weapon;
+        _controls.Player.Exit.performed += Exit;
         _controls.Player.Dash.performed += Dash;
     }
 
@@ -70,6 +72,11 @@ public class CharacterController2D : MonoBehaviour
             m_interaction = true;
         else if (context.canceled)
             m_interaction = false;
+    }
+
+    private void Exit (InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void Swap_Weapon(InputAction.CallbackContext context)

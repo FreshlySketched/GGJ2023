@@ -1381,7 +1381,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\t\t\tControls\na,d for movement\nspace for jump\nleft click for attack\nright
-    click for dash\nw for shield (very important!)"
+    click for dash\nw for shield (very important!)\nesc to exit"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b04385710b136814db0c0933dceef1ad, type: 2}
   m_sharedMaterial: {fileID: -5929729520056577574, guid: b04385710b136814db0c0933dceef1ad, type: 2}
