@@ -1259,6 +1259,7 @@ MonoBehaviour:
     m_Bits: 0
   player: {fileID: 638185404}
   m_Bones: {fileID: 0}
+  bossHealth: {fileID: 0}
 --- !u!61 &948217416
 BoxCollider2D:
   m_ObjectHideFlags: 0
