@@ -65,7 +65,7 @@ public class PlayerStart : MonoBehaviour
 
     private void Update()
     {
-        if(m_Health.currentHealth <= 0)
+        if(m_Health.currentHealth <= 0 || transform.position.y < -15f)
         {
             m_Health.currentHealth = 100;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
