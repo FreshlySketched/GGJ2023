@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a09b877788c8f5a43a38d15bfe2a2a72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,9 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 10000
-  damage: 20
+  damage: 5
   mask:
     serializedVersion: 2
     m_Bits: 0
   player: {fileID: 0}
   m_Bones: {fileID: 0}
+  bossHealth: {fileID: 0}

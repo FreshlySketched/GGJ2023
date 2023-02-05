@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 434198a0dbc469844889340304e97077
+guid: db0948c3009223e4fb0cda4638b00cae
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,11 +105,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Steven_Assets_0
+      name: Steven_Assets1_0
       rect:
         serializedVersion: 2
-        x: 491
-        y: 717
+        x: 562
+        y: 724
         width: 85
         height: 185
       alignment: 0
@@ -119,18 +119,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 664f5214d3e1ce143802f3d98f221010
-      internalID: 22719900
+      spriteID: d41ac284c4a1a7145aab3209fa271ca3
+      internalID: 1370890843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_2
+      name: Steven_Assets1_1
       rect:
         serializedVersion: 2
-        x: 673
-        y: 358
+        x: 618
+        y: 902
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad569e0c6fd3fb84bab3fe511c95ddd6
+      internalID: -266271630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_2
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 365
         width: 281
         height: 582
       alignment: 0
@@ -140,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04f1477dd9d4e6e418bccf31a010290b
-      internalID: 1433066962
+      spriteID: 68f5620bc6f2d4f4cae88ceeebdcec91
+      internalID: 1532380960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_3
+      name: Steven_Assets1_3
       rect:
         serializedVersion: 2
-        x: 1199
-        y: 469
-        width: 415
-        height: 475
+        x: 1279
+        y: 560
+        width: 310
+        height: 357
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,39 +182,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08b73a21a2b8a0c45965a40687ecf6ef
-      internalID: -34928077
+      spriteID: c985db45d37069b47b7391fb0db5e2aa
+      internalID: 14732146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_4
+      name: Steven_Assets1_4
       rect:
         serializedVersion: 2
-        x: 1783
-        y: 647
-        width: 222
-        height: 277
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eda7ba91ad0545e44a391351a407e316
-      internalID: -555036702
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Steven_Assets_5
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 742
+        x: 126
+        y: 729
         width: 364
         height: 124
       alignment: 0
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ed6ee911dbd95542b0fbf5177f07e4e
-      internalID: 400595726
+      spriteID: 2a2adea8c61bcec40af9c990a275f3c5
+      internalID: 2098700492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_7
+      name: Steven_Assets1_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 64
-        width: 427
-        height: 637
+        x: 651
+        y: 843
+        width: 6
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,39 +224,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37eb4a7b103bfa446a02d77b9cf3528d
-      internalID: 462846801
+      spriteID: d160f172a7f197b41b70137f5ee0614c
+      internalID: 1577048443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_8
+      name: Steven_Assets1_6
       rect:
         serializedVersion: 2
-        x: 476
-        y: 366
-        width: 166
-        height: 301
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 339df86c4cd3aec43b2df5dfc83ed231
-      internalID: 1059332408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Steven_Assets_9
-      rect:
-        serializedVersion: 2
-        x: 993
-        y: 468
+        x: 1720
+        y: 576
         width: 166
         height: 299
       alignment: 0
@@ -266,18 +245,102 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78549a522565c1d478873049943885d0
-      internalID: -1371138429
+      spriteID: 831f3019d0f2418469044e06dd541469
+      internalID: -1028712634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_12
+      name: Steven_Assets1_7
       rect:
         serializedVersion: 2
-        x: 475
-        y: 21
+        x: 91
+        y: 71
+        width: 427
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b21983a433c2c64a99aed88ddc543dc
+      internalID: -2065621173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_8
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 373
+        width: 166
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0417741f12c9b9e4cb9f60aa104f22fe
+      internalID: 1148753692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_9
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 627
+        width: 16
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 234d33e615062b146886b535d4ca9663
+      internalID: -614198648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_10
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 627
+        width: 16
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c333916330a4e0c499e0c826a15bbf1e
+      internalID: 1385028616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_11
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 9
         width: 348
         height: 277
       alignment: 0
@@ -287,18 +350,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bba881f712e62e458bf516e04428b64
-      internalID: 1826607189
+      spriteID: 086f4053d6a079d4da9e0109356f7359
+      internalID: -1197496953
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_13
+      name: Steven_Assets1_12
       rect:
         serializedVersion: 2
-        x: 871
-        y: 12
+        x: 940
+        y: 10
         width: 232
         height: 304
       alignment: 0
@@ -308,18 +371,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbf989bdefcdc9440a9fa4e734407f43
-      internalID: -1979313380
+      spriteID: 9cf09491db9639945b04be2b74232218
+      internalID: 2016776190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_14
+      name: Steven_Assets1_13
       rect:
         serializedVersion: 2
-        x: 1149
-        y: 18
+        x: 1218
+        y: 11
         width: 236
         height: 377
       alignment: 0
@@ -329,20 +392,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64eca70568600db4ebf513c407a7ed13
-      internalID: 585221294
+      spriteID: a42f44e2ac0d5534bb75d561f2bfa2d0
+      internalID: -1627266792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Steven_Assets_16
+      name: Steven_Assets1_14
       rect:
         serializedVersion: 2
-        x: 1626
-        y: 11
-        width: 415
-        height: 473
+        x: 1573
+        y: 119
+        width: 19
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,8 +413,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20e8d3c240c38214789510fe793a19fb
-      internalID: 1903598618
+      spriteID: f1e0f4b81897620478c5abf274d0adc4
+      internalID: -546960946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_15
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 43
+        width: 354
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61581bdd30a434d41868607d7afdd1fb
+      internalID: -821687617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Steven_Assets1_16
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 119
+        width: 19
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6157df78bac2ee4f9c8d6fd5eb52129
+      internalID: -1822121718
       vertices: []
       indices: 
       edges: []
@@ -367,24 +472,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Steven_Assets_12: 1826607189
-      Steven_Assets_3: -34928077
-      Steven_Assets_4: -555036702
-      Steven_Assets_16: 1903598618
-      Steven_Assets_5: 400595726
-      Steven_Assets_0: 22719900
-      Steven_Assets_1: 342606011
-      Steven_Assets_11: -1124910947
-      Steven_Assets_17: 1526648338
-      Steven_Assets_14: 585221294
-      Steven_Assets_6: -1872914970
-      Steven_Assets_15: -1739058549
-      Steven_Assets_2: 1433066962
-      Steven_Assets_7: 462846801
-      Steven_Assets_10: -782097674
-      Steven_Assets_8: 1059332408
-      Steven_Assets_9: -1371138429
-      Steven_Assets_13: -1979313380
+      Steven_Assets1_0: 1370890843
+      Steven_Assets1_2: 1532380960
+      Steven_Assets1_6: -1028712634
+      Steven_Assets1_9: -614198648
+      Steven_Assets1_3: 14732146
+      Steven_Assets1_11: -1197496953
+      Steven_Assets1_7: -2065621173
+      Steven_Assets1_14: -546960946
+      Steven_Assets1_10: 1385028616
+      Steven_Assets1_16: -1822121718
+      Steven_Assets1_4: 2098700492
+      Steven_Assets1_12: 2016776190
+      Steven_Assets1_1: -266271630
+      Steven_Assets1_13: -1627266792
+      Steven_Assets1_15: -821687617
+      Steven_Assets1_8: 1148753692
+      Steven_Assets1_5: 1577048443
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
