@@ -1142,8 +1142,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   player: {fileID: 0}
-  m_Bones: {fileID: 0}
-  bossHealth: {fileID: 0}
+  m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
+  bossHealth: {fileID: 2105197086}
 --- !u!212 &1243808841
 SpriteRenderer:
   m_ObjectHideFlags: 0
