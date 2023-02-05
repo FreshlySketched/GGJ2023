@@ -10,7 +10,7 @@ public class CharacterController2D : MonoBehaviour
     public PlayerInputActions _controls;
     [SerializeField] private Transform _groundCheck;
     private bool _grounded = true;
-    [SerializeField] private float _groundCheckRadius = .1f;
+    //[SerializeField] private float _groundCheckRadius = .1f;
     [SerializeField] private LayerMask _whatIsGround;   
     [SerializeField] private float _jumpForce = 50f; //Default to 50
     [SerializeField] private float _moveVelocity = 10f;
