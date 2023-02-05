@@ -65,4 +65,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.016666668
+    functionName: CancelJump
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 18ef6a666c8b8604bb1bb1a9f69a0a8c, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

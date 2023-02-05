@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartWeapon : BaseWeapon
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,15 +21,16 @@ public class StartWeapon : BaseWeapon
     public override void PerformAttack()
     {
         StartCoroutine(AttackWait());
-
-
     }
+
 
     IEnumerator AttackWait()
     {
+        animator.SetInteger("Attack", number);
         yield return new WaitForSeconds(0.2f);
-        this.gameObject.SetActive(false);
+      
     }
+
 
 
     private void OnTriggerEnter2D(Collider2D collision)

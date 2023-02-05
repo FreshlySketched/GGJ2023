@@ -82,5 +82,9 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-
+    public void EndAttack()
+    {
+        GetComponent<Animator>().SetInteger("Attack", 0);
+        m_currentWeapon.gameObject.SetActive(false);
+    }
 }

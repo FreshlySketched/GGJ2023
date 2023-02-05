@@ -9,6 +9,8 @@ public abstract class BaseWeapon : MonoBehaviour
     private int m_Damage = 25;
     public bool m_hasBeenActivated = false;
     private float m_startPosition;
+    public Animator animator;
+    public int number;
     void Start()
     {
 
@@ -21,7 +23,6 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     public abstract void PerformAttack();
-
 
     public int GetDamage()
     {

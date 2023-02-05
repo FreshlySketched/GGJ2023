@@ -37,10 +37,13 @@ public class CharacterController2D : MonoBehaviour
     public bool m_Flipped = false;
     public bool m_invunMove = true;
     Color m_currentColor;
+    Animator m_playerAnimator;
+
     private void Awake() {
         _controls = new PlayerInputActions();
         _rb2d = GetComponent<Rigidbody2D>();
         _playerHealth = GetComponent<Health>();
+        m_playerAnimator = GetComponent<Animator>();
     }
     private void OnEnable(){_controls.Enable();}    
     private void OnDisable(){ _controls.Disable();}
@@ -109,6 +112,7 @@ public class CharacterController2D : MonoBehaviour
             _rb2d.AddForce(new Vector2(0f, (_jumpForce * 10)));
             m_hasJumped = true;
             _grounded = false;
+            m_playerAnimator.SetBool("StartJump", true);
         }
     }    
 
@@ -136,6 +140,10 @@ public class CharacterController2D : MonoBehaviour
         //_grounded = false;   
         float move = _controls.Player.Move.ReadValue<float>();
 
+        if (move != 0)
+            m_playerAnimator.SetBool("StartRun", true);
+        else
+            m_playerAnimator.SetBool("StartRun", false);
 
         if (move < 0)
         {
@@ -156,12 +164,13 @@ public class CharacterController2D : MonoBehaviour
         if (_grounded)
         {
             m_hasJumped = false;
+          
         }        
 
 
         if (m_dashed)
         {
-            _rb2d.AddForce(new Vector2(move * 50, 0.0f), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(move * 75, 0.0f), ForceMode2D.Impulse);
             m_dashed = false;
             m_dashTimer = true;
             StartCoroutine(DashTime());
@@ -170,6 +179,7 @@ public class CharacterController2D : MonoBehaviour
 
         else if(!m_dashTimer && m_invunMove)
             _rb2d.velocity = new Vector2(move * _moveVelocity, _rb2d.velocity.y);
+            
 
         else
             _rb2d.velocity = new Vector2(_rb2d.velocity.x, 0f);
@@ -197,7 +207,7 @@ public class CharacterController2D : MonoBehaviour
     {
         if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
         {
-            _rb2d.AddForce(new Vector2(knockbackdistance * 4, -_rb2d.velocity.y), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(knockbackdistance * 2, -_rb2d.velocity.y), ForceMode2D.Impulse);
             m_currentColor = GetComponent<SpriteRenderer>().color;
             GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
             _playerHealth.ChangeHealthBar(damage);
@@ -208,7 +218,13 @@ public class CharacterController2D : MonoBehaviour
             StartCoroutine(InvunMoveCounter());
         }
     }
-    
+
+    public void CancelJump()
+    {
+        m_playerAnimator.SetBool("StartJump", false);
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
