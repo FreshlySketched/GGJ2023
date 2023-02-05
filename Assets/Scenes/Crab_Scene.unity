@@ -3052,7 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5f8468a31929b43a66591f567aa217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossName: Captian Crabulon!!
+  bossName: Captain Blackclaw
   bossLabel: {fileID: 567424871}
   currentHealth: 200
   _maxHealth: 200
