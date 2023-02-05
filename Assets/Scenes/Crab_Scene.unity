@@ -430,14 +430,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 200
+  m_health: 20000
   damage: 10
   mask:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 2124446596}
   m_Bones: {fileID: 0}
-  bossHealth: {fileID: 0}
+  bossHealth: {fileID: 2029964087}
 --- !u!114 &33673019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,6 +741,17 @@ Transform:
   m_Father: {fileID: 1894657564}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303252670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7098852125445069943, guid: 78faf03810c895141855a6022ad3307e, type: 3}
+  m_PrefabInstance: {fileID: 199185166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &339701608
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,14 +895,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 300
+  m_health: 20000
   damage: 10
   mask:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 2124446596}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
-  bossHealth: {fileID: 0}
+  bossHealth: {fileID: 2029964087}
 --- !u!1 &341700288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,14 +1227,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 200
+  m_health: 20000
   damage: 10
   mask:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 2124446596}
   m_Bones: {fileID: 0}
-  bossHealth: {fileID: 0}
+  bossHealth: {fileID: 2029964087}
 --- !u!1001 &481702420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1281,6 +1292,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05bfd0ad598ca764cbb4fc8ffa7cf036, type: 3}
+--- !u!114 &540690564 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7098852126595047721, guid: 78faf03810c895141855a6022ad3307e, type: 3}
+  m_PrefabInstance: {fileID: 199185166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546653913
 GameObject:
   m_ObjectHideFlags: 0
@@ -16416,10 +16438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: Captain Blackclaw
-  bossLabel: {fileID: 0}
-  currentHealth: 200
-  _maxHealth: 200
-  healthbar: {fileID: 0}
+  bossLabel: {fileID: 303252670}
+  currentHealth: 500
+  _maxHealth: 500
+  healthbar: {fileID: 540690564}
   damageDealerList:
   - {fileID: 437694902}
   - {fileID: 339701614}
