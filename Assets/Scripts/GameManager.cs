@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
 
     public AudioClip hubWorldMusic;
+    public AudioClip surfaceMusic;
     public AudioClip bossMusic;
 
     private void Awake() 
@@ -29,12 +30,16 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+        PlaySurfaceBGMusic();
+    }
     public void NewScene(int sceneIndex)
     {
         Debug.Log("Now loading scene at build index " + sceneIndex);
         Setup.NewData();
         SceneManager.LoadScene(sceneIndex);
-        
+        SelectMusic(sceneIndex);
     }
 
     public void LoadScene()
@@ -62,7 +67,36 @@ public class GameManager : MonoBehaviour
     //Musical Section
     public void PlayHubBGMusic()
     {
+        musicSource.Stop();
+        PlayBGMusic(surfaceMusic);
+    }
 
+    public void PlaySurfaceBGMusic()
+    {
+        musicSource.Stop();
+        PlayBGMusic(hubWorldMusic);
+    }
+
+    public void PlayBossBGMusic()
+    {
+        musicSource.Stop();
+        PlayBGMusic(bossMusic);
+    }
+
+    public void SelectMusic(int sceneNumber)
+    {
+        if(sceneNumber == 0 || sceneNumber == 3)
+        {
+            PlaySurfaceBGMusic();
+        }
+        else if (sceneNumber == 1)
+        {
+            PlayHubBGMusic();
+        }
+        else if (sceneNumber == 2 || sceneNumber == 4 || sceneNumber == 5)
+        {
+            PlayBossBGMusic();
+        }
     }
 
 }

@@ -35,7 +35,7 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             if (m_Bones != null)
                 Instantiate(m_Bones, transform.position, transform.rotation);

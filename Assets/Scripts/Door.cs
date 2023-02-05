@@ -62,6 +62,7 @@ public class Door : MonoBehaviour
             {
 
                 m_startData.m_doorNumber = m_doorNumber;
+                SelectMusic();
                 SceneManager.LoadScene(m_sceneNumber);
                 m_fade = false;
             }
@@ -95,6 +96,11 @@ public class Door : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
       
+    }
+
+    public void SelectMusic()
+    {
+        GameManager.Instance.SelectMusic(m_sceneNumber);
     }
 
 

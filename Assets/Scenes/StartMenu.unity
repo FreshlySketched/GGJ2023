@@ -156,6 +156,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 41742289}
   musicSource: {fileID: 41742288}
+  hubWorldMusic: {fileID: 8300000, guid: 738fc4e95b5113047a93839a7abdaafe, type: 3}
+  surfaceMusic: {fileID: 8300000, guid: 10220c70e1f58474399709b86d3d0614, type: 3}
+  bossMusic: {fileID: 8300000, guid: c52ff56338b8305449612efb6db2746f, type: 3}
 --- !u!4 &41742287
 Transform:
   m_ObjectHideFlags: 0
@@ -510,6 +513,7 @@ GameObject:
   - component: {fileID: 505628715}
   - component: {fileID: 505628714}
   - component: {fileID: 505628713}
+  - component: {fileID: 505628717}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -602,6 +606,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &505628717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505628712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a43b61e87cb860f43a87fc43e4f6b71d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stone4: {fileID: 8300000, guid: b9feba49e421b8940a266b2054dba52f, type: 3}
 --- !u!1 &663321911
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,22 +779,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 41742286}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
+      - m_Target: {fileID: 505628717}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: b9feba49e421b8940a266b2054dba52f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41742286}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewScene
-        m_Mode: 3
+      - m_Target: {fileID: 505628717}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: NewGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -908,20 +925,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 41742286}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
+      - m_Target: {fileID: 505628717}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: b9feba49e421b8940a266b2054dba52f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 41742286}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 505628717}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -1310,13 +1327,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 41742286}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
+      - m_Target: {fileID: 505628717}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: b9feba49e421b8940a266b2054dba52f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
