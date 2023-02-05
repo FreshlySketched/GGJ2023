@@ -9,8 +9,17 @@ public class DamageDealer : MonoBehaviour
     private bool _playerInKnockback;
     public CharacterController2D player;
     public GameObject m_Bones;
-    private void Start() {
+
+    public BossHealth bossHealth;
+
+
+    private void Start() 
+    {
         //mask = LayerMask.GetMask("Player");
+        if (GetComponentInParent<BossHealth>() != null)
+        {
+            bossHealth = GetComponentInParent<BossHealth>();
+        }
     }
 
     private void Update()
@@ -49,5 +58,11 @@ public class DamageDealer : MonoBehaviour
     private void OnDestroy()
     {
         Destroy(transform.root.gameObject);
+    }
+
+    public void TakeDamage()
+    {
+        m_health -= 50;
+        bossHealth.TakeDamage(50);
     }
 }

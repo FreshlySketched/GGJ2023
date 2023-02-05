@@ -34,7 +34,8 @@ public class StartWeapon : BaseWeapon
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.GetComponent<DamageDealer>().m_health -= 50;
+            collision.GetComponent<DamageDealer>().TakeDamage();
+
         }
 
     }
