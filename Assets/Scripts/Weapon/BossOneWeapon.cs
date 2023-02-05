@@ -27,4 +27,6 @@ public class BossOneWeapon : BaseWeapon
         this.gameObject.SetActive(false);
     }
 
+
+
 }
