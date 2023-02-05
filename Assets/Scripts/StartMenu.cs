@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
@@ -27,7 +28,12 @@ public class StartMenu : MonoBehaviour
     {
         GameManager.Instance.NewScene(1);
     }
+    public void LoadScene()
+    {
+        //Debug.Log("Now loading scene at build index " + sceneIndex);
 
+        SceneManager.LoadScene(Setup.LoadData());
+    }
     public void ExitGame()
     {
         GameManager.Instance.ExitGame();
