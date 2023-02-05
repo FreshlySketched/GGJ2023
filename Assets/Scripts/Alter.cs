@@ -32,7 +32,7 @@ public class Alter : MonoBehaviour
 
             if (m_totalBones == 2)
             {
-                //finalDoor.SetActive(true);
+                finalDoor.SetActive(true);
 
             }
 
