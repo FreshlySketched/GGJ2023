@@ -11240,6 +11240,10 @@ PrefabInstance:
       value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 7135387384242949306, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
+      propertyPath: bossName
+      value: Nimble the Quick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7135387384242949306, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
       propertyPath: bossLabel
       value: 
       objectReference: {fileID: 908455411}
@@ -11303,6 +11307,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1745164184}
+    - target: {fileID: 7135387384242949319, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
+      propertyPath: distanceFromEnemy
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7135387384242949319, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
       propertyPath: telportLocations.Array.data[0]
       value: 
