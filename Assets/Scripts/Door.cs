@@ -34,6 +34,8 @@ public class Door : MonoBehaviour
     private float t = 0f;
     private float f = 1f;
     private bool onStart = true;
+
+    public int thisDoorNumber = 0;
     
     // Start is called before the first frame update
     void Start()

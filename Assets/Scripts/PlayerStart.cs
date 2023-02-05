@@ -8,6 +8,7 @@ public class PlayerStart : MonoBehaviour
 {
     public Vector2 m_startLocation { get; set; }
     public int m_doorNumber = -1;
+    public int m_thisDoorNumber = 0;
     public string m_doorName = "";
     public Transform[] m_doors;
     public int m_health;
@@ -57,6 +58,8 @@ public class PlayerStart : MonoBehaviour
 
         PlayerPrefs.SetInt("Scene", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
+        //PlayerPrefs.SetInt("ThisDoorNumber", );
+
         PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
         PlayerPrefs.SetInt("Bones", m_Health.m_bones);
         PlayerPrefs.SetString("Name", m_doorName);

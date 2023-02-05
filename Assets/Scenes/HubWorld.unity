@@ -601,6 +601,7 @@ MonoBehaviour:
   m_DoorName: 
   m_FadeSpeed: 1
   image: {fileID: 980378313}
+  thisDoorNumber: 0
 --- !u!58 &90587069
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -671,11 +672,11 @@ PrefabInstance:
     - target: {fileID: 7814719980124683336, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_doors.Array.data[0]
       value: 
-      objectReference: {fileID: 90587067}
+      objectReference: {fileID: 1995145981}
     - target: {fileID: 7814719980124683336, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_doors.Array.data[1]
       value: 
-      objectReference: {fileID: 550768602}
+      objectReference: {fileID: 1776160102}
     - target: {fileID: 7814719980124683336, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_doors.Array.data[2]
       value: 
@@ -1202,6 +1203,7 @@ MonoBehaviour:
   m_DoorName: 
   m_FadeSpeed: 1
   image: {fileID: 980378313}
+  thisDoorNumber: 0
 --- !u!58 &550768604
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -19001,7 +19003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name
-      value: Door
+      value: DoorCrab
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_IsActive
@@ -19637,6 +19639,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &1776160102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
+  m_PrefabInstance: {fileID: 1669986789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1864279077
 GameObject:
   m_ObjectHideFlags: 0
@@ -19996,6 +20003,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883238162}
   m_CullTransparentMesh: 1
+--- !u!4 &1995145981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1775253231986183246, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
+  m_PrefabInstance: {fileID: 1775253232924001325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2029596624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20139,7 +20151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name
-      value: Door1
+      value: DoorBunny
       objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_IsActive
