@@ -10795,6 +10795,10 @@ PrefabInstance:
       propertyPath: m_controller
       value: 
       objectReference: {fileID: 1745164184}
+    - target: {fileID: 1775253231986183241, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
+      propertyPath: m_doorNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1775253231986183244, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
       propertyPath: m_Name
       value: Door
@@ -11231,6 +11235,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1745164184}
+    - target: {fileID: 7135387384242949304, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
+      propertyPath: m_health
+      value: 800
+      objectReference: {fileID: 0}
     - target: {fileID: 7135387384242949306, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
       propertyPath: bossLabel
       value: 
@@ -11239,6 +11247,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1924305069}
+    - target: {fileID: 7135387384242949306, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
+      propertyPath: _maxHealth
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 7135387384242949316, guid: d8ce8aec9e148c548afeec7fa40f9e1a, type: 3}
       propertyPath: m_Name
       value: Rabbit Boss

@@ -6,7 +6,7 @@ using UnityEngine;
 public class RandomBullet : MonoBehaviour
 {
     public Vector2 m_Movement;
-
+    private bool destroy = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,13 @@ public class RandomBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.gameObject.CompareTag("Player"))
-            //Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Player"))
+            destroy = true;
+    }
+
+    public void LateUpdate()
+    {
+       if(destroy)
+            Destroy(gameObject);
     }
 }

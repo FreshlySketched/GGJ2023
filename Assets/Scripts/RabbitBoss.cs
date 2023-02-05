@@ -24,7 +24,7 @@ public class RabbitBoss : MonoBehaviour
         startPos = transform.position;
         Telport();
         StartCoroutine(BulletTime());
-        enemyDamage = GetComponent<DamageDealer>().m_health;
+        enemyDamage = GetComponent<BossHealth>().currentHealth;
     }
 
     // Update is called once per frame
@@ -42,20 +42,21 @@ public class RabbitBoss : MonoBehaviour
         {
             startShooting = false;
 
-            if (Random.Range(0, 4) > 0 && !teleportCountdownStarted)
+            if (Random.Range(0, 1) == 0 && !teleportCountdownStarted)
             {
                 
                 ShootRandomly();
 
             }
 
-            else if (!teleportCountdownStarted)
+            //future homing attack
+            /*else if (!teleportCountdownStarted)
             {
 
-            }
+            }*/
         }
 
-        if (GetComponent<DamageDealer>().m_health < enemyDamage)
+        if (GetComponent<BossHealth>().currentHealth < enemyDamage)
         {
             Telport();
             allowTeleport = false;

@@ -32,7 +32,7 @@ public class CharacterController2D : MonoBehaviour
     private bool m_dashTimer = false;
 
     private bool m_hasJumped = false;
-    private bool m_invunFrames = false;
+    public bool m_invunFrames = false;
 
     public bool m_Flipped = false;
     public bool m_invunMove = true;
@@ -255,9 +255,11 @@ public class CharacterController2D : MonoBehaviour
 
     IEnumerator InvunCounter()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
         m_invunFrames = false;
-       
+        var color = GetComponent<SpriteRenderer>().color;
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1.0f);
+
     }
 
     IEnumerator InvunMoveCounter()

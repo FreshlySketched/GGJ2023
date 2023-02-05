@@ -281,8 +281,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 416590693
-  m_SortingLayer: 3
+  m_SortingLayerID: -1296074371
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: -129432620, guid: 2bac1279b01bc80429f136526fb13233, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -825,8 +825,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 416590693
-  m_SortingLayer: 3
+  m_SortingLayerID: -1296074371
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: -65649015, guid: 2bac1279b01bc80429f136526fb13233, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1140,8 +1140,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 416590693
-  m_SortingLayer: 3
+  m_SortingLayerID: -1296074371
+  m_SortingLayer: 4
   m_SortingOrder: 5
   m_Sprite: {fileID: -246711471, guid: 2bac1279b01bc80429f136526fb13233, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16415,12 +16415,12 @@ MonoBehaviour:
   isAttacking: 0
   isCoolingDown: 0
   coroutineRunning: 0
-  attackTime: 10
-  attackCooldownTime: 5
+  attackTime: 5
+  attackCooldownTime: 2
   currentAttackState: 1
   chargeStartPosition: {fileID: 1052776320}
   chargeEndPosition: {fileID: 1501708953}
-  chargeWindUpTime: 5
+  chargeWindUpTime: 2
   chargeAttackTime: 3
   chargeSpeed: 20
   returnSpeed: 10

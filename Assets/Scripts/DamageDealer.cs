@@ -50,7 +50,25 @@ public class DamageDealer : MonoBehaviour
                 knockbackPos = -10;
             else
                 knockbackPos = 10;
+            var color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+            collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.5f);
+            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
+        }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Player") && collision.gameObject.layer == 8 && !collision.gameObject.GetComponent<CharacterController2D>().m_invunFrames)
+        {
+            int knockbackPos = 0;
+
+            if (collision.gameObject.transform.position.x < transform.position.x)
+                knockbackPos = -10;
+            else
+                knockbackPos = 10;
+            var color = collision.gameObject.GetComponent<SpriteRenderer>().color;
+            collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.5f);
             collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
         }
     }

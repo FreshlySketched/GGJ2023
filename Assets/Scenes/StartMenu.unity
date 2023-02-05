@@ -156,9 +156,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 41742289}
   musicSource: {fileID: 41742288}
-  hubWorldMusic: {fileID: 0}
-  surfaceMusic: {fileID: 0}
-  bossMusic: {fileID: 0}
+  hubWorldMusic: {fileID: 8300000, guid: 738fc4e95b5113047a93839a7abdaafe, type: 3}
+  surfaceMusic: {fileID: 8300000, guid: 10220c70e1f58474399709b86d3d0614, type: 3}
+  bossMusic: {fileID: 8300000, guid: c52ff56338b8305449612efb6db2746f, type: 3}
 --- !u!4 &41742287
 Transform:
   m_ObjectHideFlags: 0
