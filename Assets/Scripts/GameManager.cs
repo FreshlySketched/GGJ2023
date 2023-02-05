@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
 
     public AudioClip hubWorldMusic;
     public AudioClip bossMusic;
-    public AudioClip hubWorldMusic;
-    public AudioClip hubWorldMusic;
 
     private void Awake() 
     { 
