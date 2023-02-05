@@ -28,8 +28,8 @@ public class DamageDealer : MonoBehaviour
     {
         if (m_health <= 0)
         {
-            if(m_Bones != null) 
-                Instantiate(m_Bones, transform.position,transform.rotation);
+            //if(m_Bones != null) 
+                //Instantiate(m_Bones, transform.position,transform.rotation);
             
             Destroy(gameObject);
         }
