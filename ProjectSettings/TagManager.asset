@@ -53,3 +53,15 @@ TagManager:
   - name: Dark
     uniqueID: 543090241
     locked: 0
+  - name: Background
+    uniqueID: 3389529749
+    locked: 0
+  - name: Midground
+    uniqueID: 416590693
+    locked: 0
+  - name: Foreground
+    uniqueID: 2998892925
+    locked: 0
+  - name: Player
+    uniqueID: 1615803239
+    locked: 0

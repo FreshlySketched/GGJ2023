@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource musicSource;
 
+    public AudioClip hubWorldMusic;
+    public AudioClip bossMusic;
+
     private void Awake() 
     { 
         if (_instance != null && _instance != this) 
@@ -54,6 +57,12 @@ public class GameManager : MonoBehaviour
     public void PlayBGMusic(AudioClip clip)
     {
         musicSource.PlayOneShot(clip);
+    }
+
+    //Musical Section
+    public void PlayHubBGMusic()
+    {
+
     }
 
 }

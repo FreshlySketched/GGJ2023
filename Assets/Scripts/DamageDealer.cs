@@ -9,16 +9,27 @@ public class DamageDealer : MonoBehaviour
     private bool _playerInKnockback;
     public CharacterController2D player;
     public GameObject m_Bones;
+
+    public BossHealth bossHealth;
+
     private void Start() {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
         //mask = LayerMask.GetMask("Player");
+
+        if (GetComponentInParent<BossHealth>() != null)
+        {
+            bossHealth = GetComponentInParent<BossHealth>();
+        }
+
     }
 
     private void Update()
     {
-        if (m_health == 0)
+        if (m_health <= 0)
         {
-            if(m_Bones != null) 
-                Instantiate(m_Bones, transform.position,transform.rotation);
+            //if(m_Bones != null) 
+                //Instantiate(m_Bones, transform.position,transform.rotation);
             
             Destroy(gameObject);
         }
@@ -42,5 +53,16 @@ public class DamageDealer : MonoBehaviour
 
             collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(transform.root.gameObject);
+    }
+
+    public void TakeDamage()
+    {
+        m_health -= 50;
+        bossHealth.TakeDamage(50);
     }
 }

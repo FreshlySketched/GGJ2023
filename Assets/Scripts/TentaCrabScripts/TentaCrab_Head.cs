@@ -20,6 +20,8 @@ public class TentaCrab_Head : MonoBehaviour
     public float headMoveSpeed = 2f;
     public float dstToPos;
 
+    public int segmentDst;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,7 @@ public class TentaCrab_Head : MonoBehaviour
     void Update()
     {
         //HeadAttack_SM();
+        ConnectLine();
     }
 
     public bool HeadAttack_SM()
@@ -70,7 +73,7 @@ public class TentaCrab_Head : MonoBehaviour
         //first we get the distance
         float dst = Vector3.Distance(this.transform.position, stalkPosition.position);
         //now divide by 5(round to int) to get the number of segments
-        int segments = (int)dst/5;
+        int segments = (int)dst/ segmentDst;
         lineRend.positionCount = segments + 2;
 
         for (float i = 1; i < segments+1; i++)
@@ -92,7 +95,7 @@ public class TentaCrab_Head : MonoBehaviour
 
         this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition.position, headMoveSpeed * Time.deltaTime);
         dstToPos = Vector3.Distance(this.transform.position, targetPosition.position);
-        if (dstToPos <= 1f)
+        if (dstToPos <= 0.1f)
         {
             if(currentHeadState == HeadStates.headAttack)
             {
