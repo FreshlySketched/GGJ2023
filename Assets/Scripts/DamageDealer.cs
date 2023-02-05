@@ -10,12 +10,14 @@ public class DamageDealer : MonoBehaviour
     public CharacterController2D player;
     public GameObject m_Bones;
     private void Start() {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
         //mask = LayerMask.GetMask("Player");
     }
 
     private void Update()
     {
-        if (m_health == 0)
+        if (m_health <= 0)
         {
             if(m_Bones != null) 
                 Instantiate(m_Bones, transform.position,transform.rotation);

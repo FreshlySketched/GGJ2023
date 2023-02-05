@@ -12,19 +12,26 @@ public class RabbitBoss : MonoBehaviour
 
     private Vector2 startPos;
     public GameObject randomBullet;
+
+    public int amountOfBullets = 15;
+    public float distanceFromEnemy = 10f;
+
+    public float enemyDamage;
+    public bool allowTeleport = true;
     // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
         Telport();
         StartCoroutine(BulletTime());
+        enemyDamage = GetComponent<DamageDealer>().m_health;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if(Vector3.Distance(player.transform.position, transform.position) < 12 && !teleportCountdownStarted)
+        if(Vector3.Distance(player.transform.position, transform.position) < distanceFromEnemy && !teleportCountdownStarted)
         {
             teleportCountdownStarted = true;
             StartCoroutine(TeleportCountdown());
@@ -33,22 +40,25 @@ public class RabbitBoss : MonoBehaviour
 
         if(startShooting)
         {
-
             startShooting = false;
-            ShootRandomly();
 
-            /*if (Random.Range(0, 2) == 0)
+            if (Random.Range(0, 4) > 0 && !teleportCountdownStarted)
             {
                 
+                ShootRandomly();
 
             }
 
-            else
+            else if (!teleportCountdownStarted)
             {
 
+            }
+        }
 
-
-            }*/
+        if (GetComponent<DamageDealer>().m_health < enemyDamage)
+        {
+            Telport();
+            allowTeleport = false;
         }
     }
 
@@ -66,66 +76,53 @@ public class RabbitBoss : MonoBehaviour
 
     void Telport()
     {
-        Transform newPos;
-        bool isNewLocation;
-        
-        do
+        if (allowTeleport)
         {
-            newPos = telportLocations[Random.Range(0, telportLocations.Length)];
-            if (newPos.position == transform.position)
-                isNewLocation = false;
-            else
-                isNewLocation = true;
-        
-        } while (!isNewLocation);
+            Transform newPos;
+            bool isNewLocation;
 
-        transform.position = newPos.position;
-        teleportCountdownStarted = false;
+            do
+            {
+                newPos = telportLocations[Random.Range(0, telportLocations.Length)];
+                if (newPos.position == transform.position)
+                    isNewLocation = false;
+                else
+                    isNewLocation = true;
+
+            } while (!isNewLocation);
+
+            transform.position = newPos.position;
+            teleportCountdownStarted = false;
+            startShooting = true;
+            allowTeleport = true;
+        }
     }
 
     void ShootRandomly()
     {
         //Do forLoop instead where its instantiated, bullets surround
-        
-        
-        var bulletOne = Instantiate(randomBullet, transform.position, transform.rotation);
-        var bulletTwo = Instantiate(randomBullet, transform.position, transform.rotation);
-        var bulletThree = Instantiate(randomBullet, transform.position, transform.rotation);
 
-        var xVariance = Random.Range(-5, 5);
-        var yVariance = Random.Range(-5, 5);
+        var xVariance = Random.Range(0, 7);
+        var yVariance = Random.Range(0, 4);
 
-        if (transform.position.x <= startPos.x && transform.position.y <= startPos.y)
+        var xValue = 2 + xVariance;
+        var yValue = -2;
+
+        if (player.transform.position.x < transform.position.x)
+            xValue *= -1;
+
+        for (int i = 0; i < amountOfBullets; i++)
         {
+            var bullet = Instantiate(randomBullet, transform.position, transform.rotation);
+            bullet.GetComponent<RandomBullet>().SetMovement(new Vector2(xValue, yValue + yVariance));
 
-            bulletOne.GetComponent<RandomBullet>().SetMovement(new Vector2(2 + xVariance, 1 + yVariance));
-            bulletTwo.GetComponent<RandomBullet>().SetMovement(new Vector2(6 + xVariance, 1 + yVariance));
-            bulletThree.GetComponent<RandomBullet>().SetMovement(new Vector2(2 + xVariance, 4 + yVariance));
-        }
+            if (yValue > 5)
+                yValue *= -1; 
 
-        else if (transform.position.x > startPos.x && transform.position.y <= startPos.y)
-        {
-            bulletOne.GetComponent<RandomBullet>().SetMovement(new Vector2(-2 + xVariance, 1 + yVariance));
-            bulletTwo.GetComponent<RandomBullet>().SetMovement(new Vector2(-6 + xVariance, 1 + yVariance));
-            bulletThree.GetComponent<RandomBullet>().SetMovement(new Vector2(-2 + xVariance, 4 + yVariance));
+            if(yValue == 0)
+                yValue++;
 
-        }
-
-        else if (transform.position.x <= startPos.x && transform.position.y > startPos.y)
-        {
-            bulletOne.GetComponent<RandomBullet>().SetMovement(new Vector2(2 + xVariance, -2 + yVariance));
-            bulletTwo.GetComponent<RandomBullet>().SetMovement(new Vector2(6 + xVariance, -2 + yVariance));
-            bulletThree.GetComponent<RandomBullet>().SetMovement(new Vector2(2 + xVariance, -6 + yVariance));
-
-        }
-
-
-        else
-        {
-            bulletOne.GetComponent<RandomBullet>().SetMovement(new Vector2(-2 + xVariance, -2 + yVariance));
-            bulletTwo.GetComponent<RandomBullet>().SetMovement(new Vector2(-6 + xVariance, -2 + yVariance));
-            bulletThree.GetComponent<RandomBullet>().SetMovement(new Vector2(-2 + xVariance, -6 + yVariance));
-
+            yValue++;
         }
 
         StartCoroutine(BulletTime());
