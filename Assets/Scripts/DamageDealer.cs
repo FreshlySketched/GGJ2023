@@ -5,7 +5,7 @@ public class DamageDealer : MonoBehaviour
     public int m_health = 100;
     public int damage = 5;
     public LayerMask mask;
-    [SerializeField] private float _knockbackRadius = 0.5f; 
+    //[SerializeField] private float _knockbackRadius = 0.5f; 
     private bool _playerInKnockback;
     public CharacterController2D player;
     public GameObject m_Bones;
