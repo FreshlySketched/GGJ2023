@@ -241,6 +241,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 699984489, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 699984489, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 699984489, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525089047, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525089048, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017324594, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2017324594, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1044457454981534791, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -486,6 +514,7 @@ MonoBehaviour:
   m_playHit: 0
   m_sceneNumber: 2
   m_doorNumber: 1
+  m_DoorName: 
   m_FadeSpeed: 1
   image: {fileID: 980378313}
 --- !u!58 &90587069
@@ -1086,6 +1115,7 @@ MonoBehaviour:
   m_playHit: 0
   m_sceneNumber: 4
   m_doorNumber: 1
+  m_DoorName: 
   m_FadeSpeed: 1
   image: {fileID: 980378313}
 --- !u!58 &550768604

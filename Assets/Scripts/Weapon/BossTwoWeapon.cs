@@ -14,7 +14,7 @@ public class BossTwoWeapon : BaseWeapon
 
     IEnumerator AttackWait()
     {
-        animator.SetInteger(number, 0);
+        animator.SetInteger("Attack", number);
         yield return new WaitForSeconds(0.2f);
 
     }

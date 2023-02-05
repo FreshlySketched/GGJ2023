@@ -477,6 +477,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1477572664633727777, guid: 78faf03810c895141855a6022ad3307e, type: 3}
+      propertyPath: m_health
+      value: 
+      objectReference: {fileID: 864329871}
+    - target: {fileID: 2952957774067216840, guid: 78faf03810c895141855a6022ad3307e, type: 3}
+      propertyPath: weaponManger
+      value: 
+      objectReference: {fileID: 2124446599}
     - target: {fileID: 7098852125445069943, guid: 78faf03810c895141855a6022ad3307e, type: 3}
       propertyPath: m_text
       value: Captain Blackclaw
@@ -2359,15 +2367,23 @@ PrefabInstance:
     - target: {fileID: -4312320023732180031, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: healthbar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1478696203}
     - target: {fileID: -4312320023732180031, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: currentHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023764384171989586, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
+      propertyPath: number
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4150589733170806418, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4376055058931751057, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -638914681, guid: 2bac1279b01bc80429f136526fb13233, type: 3}
     - target: {fileID: 7814719979135010287, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2813,6 +2829,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b015a687c08dbde42ba85ee2ce03be8e, type: 3}
+--- !u!114 &1478696203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7852756988598722154, guid: 78faf03810c895141855a6022ad3307e, type: 3}
+  m_PrefabInstance: {fileID: 199185166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1500217101
 GameObject:
   m_ObjectHideFlags: 0
@@ -16418,5 +16445,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18ef6a666c8b8604bb1bb1a9f69a0a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2124446599 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8018115876388417327, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
+  m_PrefabInstance: {fileID: 864329870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2cd66ca9c6c7848953d6b09ad8ef3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

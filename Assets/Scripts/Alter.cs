@@ -32,11 +32,11 @@ public class Alter : MonoBehaviour
 
             if (m_totalBones == 2)
             {
-                finalDoor.SetActive(true);
+                //finalDoor.SetActive(true);
 
             }
 
-            if (m_totalBones >= 3)
+            if (m_totalBones >= 2)
             {
                 m_totalBones = 0;
                 collision.gameObject.GetComponent<PlayerStart>().m_doorNumber = 0;

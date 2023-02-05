@@ -8,12 +8,13 @@ public class PlayerStart : MonoBehaviour
 {
     public Vector2 m_startLocation { get; set; }
     public int m_doorNumber = -1;
+    public string m_doorName = "";
     public Transform[] m_doors;
     public int m_health;
 
     public WeaponManager m_WeaponManger;
     public Health m_Health;
-
+    
 
     //public bool[] m_weaponsAvaiable;
     private void Start()
@@ -32,7 +33,8 @@ public class PlayerStart : MonoBehaviour
         }
 
         m_doorNumber = PlayerPrefs.GetInt("DoorNumber");
-
+        m_doorName = PlayerPrefs.GetString("DoorName");
+        
         if (m_doorNumber - 1 == -1)
             transform.position = new Vector2(0, 2.3f);
         else
@@ -57,6 +59,7 @@ public class PlayerStart : MonoBehaviour
         PlayerPrefs.SetInt("DoorNumber", m_doorNumber);
         PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
         PlayerPrefs.SetInt("Bones", m_Health.m_bones);
+        PlayerPrefs.SetString("Name", m_doorName);
         if (GameObject.FindGameObjectWithTag("Alter") != null)
             PlayerPrefs.SetInt("TotalBones",GameObject.FindGameObjectWithTag("Alter").GetComponent<Alter>().m_totalBones);
 

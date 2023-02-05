@@ -21,6 +21,8 @@ public class Door : MonoBehaviour
     [SerializeField]
     private int m_doorNumber = 0;
 
+    public string m_DoorName = "";
+
     [SerializeField]
     private float m_FadeSpeed = 5;
 
@@ -62,6 +64,7 @@ public class Door : MonoBehaviour
             {
 
                 m_startData.m_doorNumber = m_doorNumber;
+                m_startData.m_doorName = gameObject.name;
                 SelectMusic();
                 SceneManager.LoadScene(m_sceneNumber);
                 m_fade = false;
