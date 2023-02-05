@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 200
+  m_health: 2000
   damage: 10
   mask:
     serializedVersion: 2
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 300
+  m_health: 2000
   damage: 10
   mask:
     serializedVersion: 2
@@ -1082,7 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 200
+  m_health: 2000
   damage: 10
   mask:
     serializedVersion: 2
@@ -1707,6 +1707,10 @@ PrefabInstance:
     - target: {fileID: -4312320023732180031, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: currentHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716899800101836711, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150589733170806418, guid: cf4e514101096f9478ecf657c8998a62, type: 3}
       propertyPath: m_Name
@@ -3058,8 +3062,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossName: Captain Blackclaw
   bossLabel: {fileID: 567424871}
-  currentHealth: 200
-  _maxHealth: 200
+  currentHealth: 2000
+  _maxHealth: 2000
   healthbar: {fileID: 1525089049}
   damageDealerList:
   - {fileID: 437694902}
