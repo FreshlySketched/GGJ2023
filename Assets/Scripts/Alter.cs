@@ -54,6 +54,7 @@ public class Alter : MonoBehaviour
                     weapon.m_hasBeenActivated = false;
                 }
 
+                GameManager.Instance.SelectMusic(3);
                 SceneManager.LoadScene("Ending");
 
             }
