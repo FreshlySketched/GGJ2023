@@ -16420,7 +16420,7 @@ MonoBehaviour:
   currentAttackState: 1
   chargeStartPosition: {fileID: 1052776320}
   chargeEndPosition: {fileID: 1501708953}
-  chargeWindUpTime: 2
+  chargeWindUpTime: 0.5
   chargeAttackTime: 3
   chargeSpeed: 20
   returnSpeed: 10

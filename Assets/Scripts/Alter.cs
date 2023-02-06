@@ -13,6 +13,7 @@ public class Alter : MonoBehaviour
     void Start()
     {
         textbox.text = m_totalBones.ToString() + "/3";
+        finalDoor.SetActive(GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStart>().m_secondDoor);
     }
 
     // Update is called once per frame
