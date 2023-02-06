@@ -15,6 +15,9 @@ public class DialogueTrigger : MonoBehaviour
     private bool _fadeInText = false;
     private bool _fadeOutText = false;
     public UnityEvent interactionChat;
+    public SpriteRenderer backingSprite;
+
+
 
     private void Start() {
         dialogue.color = new Color (1,1,1,0);
@@ -46,8 +49,14 @@ public class DialogueTrigger : MonoBehaviour
         {
             t += (Time.deltaTime)/fadeTime;
             dialogue.color = new Color(1,1,1,t);
+            if(backingSprite != null)
+            {
+                backingSprite.color = new Color(1, 1, 1, t);
 
-            if(t >= 1f)
+            }
+
+
+            if (t >= 1f)
             {
                 _fadeInText = false;
             }
@@ -57,8 +66,14 @@ public class DialogueTrigger : MonoBehaviour
         {
             t -= Time.deltaTime;
             dialogue.color = new Color(1,1,1,t);
+            if (backingSprite != null)
+            {
+                backingSprite.color = new Color(1, 1, 1, t);
 
-            if(t <= 0)
+            }
+
+
+            if (t <= 0)
             {
                 _fadeOutText = false;
             }

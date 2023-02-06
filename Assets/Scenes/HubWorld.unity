@@ -4378,6 +4378,7 @@ MonoBehaviour:
   interactionChat:
     m_PersistentCalls:
       m_Calls: []
+  backingSprite: {fileID: 0}
 --- !u!1 &1429200826
 GameObject:
   m_ObjectHideFlags: 0
