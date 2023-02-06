@@ -15,6 +15,6 @@ public class CurrentBones : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<TextMeshProUGUI>().text = m_health.m_bones.ToString();
+        GetComponent<TextMeshProUGUI>().text = "Bones Collected: " + m_health.m_bones.ToString();
     }
 }
