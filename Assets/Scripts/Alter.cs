@@ -22,9 +22,9 @@ public class Alter : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player") && collision.GetComponent<CharacterController2D>().m_interaction)
         {
             m_totalBones += collision.gameObject.GetComponent<Health>().m_bones;
             textbox.text = m_totalBones.ToString() + "/3";
