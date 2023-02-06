@@ -15,7 +15,7 @@ public class PlayerStart : MonoBehaviour
 
     public WeaponManager m_WeaponManger;
     public Health m_Health;
-    
+    public bool m_secondDoor = false;
 
     //public bool[] m_weaponsAvaiable;
     private void Start()
@@ -35,7 +35,7 @@ public class PlayerStart : MonoBehaviour
 
         m_doorNumber = PlayerPrefs.GetInt("DoorNumber");
         m_doorName = PlayerPrefs.GetString("DoorName");
-        
+        m_secondDoor = Convert.ToBoolean(PlayerPrefs.GetInt("FinalBoss"));
         if (m_doorNumber - 1 == -1)
             transform.position = new Vector2(0, 2.3f);
         else
@@ -63,6 +63,8 @@ public class PlayerStart : MonoBehaviour
         PlayerPrefs.SetFloat("Health", m_Health.currentHealth);
         PlayerPrefs.SetInt("Bones", m_Health.m_bones);
         PlayerPrefs.SetString("Name", m_doorName);
+        PlayerPrefs.SetInt("FinalBoss", Convert.ToInt32(m_secondDoor));
+
         if (GameObject.FindGameObjectWithTag("Alter") != null)
             PlayerPrefs.SetInt("TotalBones",GameObject.FindGameObjectWithTag("Alter").GetComponent<Alter>().m_totalBones);
 

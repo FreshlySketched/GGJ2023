@@ -33,7 +33,7 @@ public class Alter : MonoBehaviour
             if (m_totalBones == 2)
             {
                 finalDoor.SetActive(true);
-
+                collision.GetComponent<PlayerStart>().m_secondDoor = true;
             }
 
             if (m_totalBones >= 3)
