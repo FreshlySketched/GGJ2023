@@ -58,6 +58,7 @@ public class RabbitBoss : MonoBehaviour
 
         if (GetComponent<BossHealth>().currentHealth < enemyDamage)
         {
+            enemyDamage = GetComponent<BossHealth>().currentHealth;
             Telport();
             allowTeleport = false;
         }
@@ -67,6 +68,7 @@ public class RabbitBoss : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Telport();
+        allowTeleport = true;
     }
 
     IEnumerator BulletTime()

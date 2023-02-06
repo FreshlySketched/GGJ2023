@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 10000
-  damage: 5
+  damage: 15
   mask:
     serializedVersion: 2
     m_Bits: 0
