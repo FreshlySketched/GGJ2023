@@ -66,7 +66,7 @@ public class RabbitBoss : MonoBehaviour
 
     IEnumerator TeleportCountdown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         Telport();
         allowTeleport = true;
     }
