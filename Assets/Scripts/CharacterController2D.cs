@@ -210,11 +210,11 @@ public class CharacterController2D : MonoBehaviour
     }
 
 
-    public void CheckHit(int damage, int knockbackdistance)
+    public void CheckHit(int damage, int knockbackdistance, float knockBackPerBattle)
     {
         if ((_playerShield.m_blockVal <= 0.0f || !m_shieldButton) && !m_invunFrames)
         {
-            _rb2d.AddForce(new Vector2(knockbackdistance * 2, -_rb2d.velocity.y), ForceMode2D.Impulse);
+            _rb2d.AddForce(new Vector2(knockbackdistance * 2 * knockBackPerBattle, -_rb2d.velocity.y), ForceMode2D.Impulse);
             m_currentColor = GetComponent<SpriteRenderer>().color;
             GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 1);
             _playerHealth.ChangeHealthBar(damage);

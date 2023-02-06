@@ -11,7 +11,7 @@ public class DamageDealer : MonoBehaviour
     public GameObject m_Bones;
 
     public BossHealth bossHealth;
-
+    public float knockBackDistance = 1;
     private void Start() {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterController2D>();
@@ -52,7 +52,7 @@ public class DamageDealer : MonoBehaviour
                 knockbackPos = 10;
             var color = collision.gameObject.GetComponent<SpriteRenderer>().color;
             collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.5f);
-            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
+            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos, knockBackDistance);
         }
     }
 
@@ -69,7 +69,7 @@ public class DamageDealer : MonoBehaviour
                 knockbackPos = 10;
             var color = collision.gameObject.GetComponent<SpriteRenderer>().color;
             collision.gameObject.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 0.5f);
-            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos);
+            collision.GetComponent<CharacterController2D>().CheckHit(damage, knockbackPos, knockBackDistance);
         }
     }
 

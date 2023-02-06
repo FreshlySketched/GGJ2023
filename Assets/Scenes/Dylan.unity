@@ -11340,6 +11340,7 @@ MonoBehaviour:
   player: {fileID: 0}
   m_Bones: {fileID: 0}
   bossHealth: {fileID: 0}
+  knockBackDistance: 1
 --- !u!212 &160705715
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12012,6 +12013,7 @@ MonoBehaviour:
   interactionChat:
     m_PersistentCalls:
       m_Calls: []
+  backingSprite: {fileID: 0}
 --- !u!70 &988286761
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -12328,6 +12330,7 @@ MonoBehaviour:
   player: {fileID: 87300747}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
   bossHealth: {fileID: 2105197086}
+  knockBackDistance: 1
 --- !u!212 &1243808841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15053,6 +15056,7 @@ GameObject:
   - component: {fileID: 1335822341}
   - component: {fileID: 1335822342}
   - component: {fileID: 1335822343}
+  - component: {fileID: 1335822344}
   m_Layer: 7
   m_Name: Fist_One
   m_TagString: Weapon
@@ -15153,6 +15157,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8067633, y: 1.178744}
   m_EdgeRadius: 0
+--- !u!114 &1335822344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335822340}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 1000000
+  damage: 40
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  player: {fileID: 87300747}
+  m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
+  bossHealth: {fileID: 2105197086}
+  knockBackDistance: 1
 --- !u!1 &1400163154
 GameObject:
   m_ObjectHideFlags: 0
@@ -15164,6 +15189,7 @@ GameObject:
   - component: {fileID: 1400163155}
   - component: {fileID: 1400163156}
   - component: {fileID: 1400163157}
+  - component: {fileID: 1400163158}
   m_Layer: 7
   m_Name: Fist_Two
   m_TagString: Weapon
@@ -15264,6 +15290,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3429952, y: 1.2705314}
   m_EdgeRadius: 0
+--- !u!114 &1400163158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400163154}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1666dc4318ee9f94f9e4b8355f98df02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 1000000
+  damage: 40
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  player: {fileID: 87300747}
+  m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
+  bossHealth: {fileID: 2105197086}
+  knockBackDistance: 1
 --- !u!1001 &1459474221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15594,6 +15641,7 @@ MonoBehaviour:
   interactionChat:
     m_PersistentCalls:
       m_Calls: []
+  backingSprite: {fileID: 0}
 --- !u!70 &1537300838
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
