@@ -12281,6 +12281,7 @@ GameObject:
   - component: {fileID: 1243808843}
   - component: {fileID: 1243808838}
   - component: {fileID: 1243808844}
+  - component: {fileID: 1243808846}
   - component: {fileID: 1243808845}
   m_Layer: 7
   m_Name: BearBoss
@@ -12323,14 +12324,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 500
-  damage: 20
+  damage: 0
   mask:
     serializedVersion: 2
     m_Bits: 0
   player: {fileID: 87300747}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
   bossHealth: {fileID: 2105197086}
-  knockBackDistance: 1
+  knockBackDistance: 0
 --- !u!212 &1243808841
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12466,6 +12467,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8728743, y: 3.6570048}
   m_EdgeRadius: 0
+--- !u!114 &1243808846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243808837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0350b206d0138684ebfe171fb60c99db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1254912104
 GameObject:
   m_ObjectHideFlags: 0
@@ -15177,7 +15190,7 @@ MonoBehaviour:
   player: {fileID: 87300747}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
   bossHealth: {fileID: 2105197086}
-  knockBackDistance: 1
+  knockBackDistance: 4
 --- !u!1 &1400163154
 GameObject:
   m_ObjectHideFlags: 0
@@ -15310,7 +15323,7 @@ MonoBehaviour:
   player: {fileID: 87300747}
   m_Bones: {fileID: 7292391848691588032, guid: b93e1c1b84cd8724d81263843860ada2, type: 3}
   bossHealth: {fileID: 2105197086}
-  knockBackDistance: 1
+  knockBackDistance: 4
 --- !u!1001 &1459474221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16031,7 +16044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 87300747}
   m_maxDashDistance: 6
-  m_punchSpacing: 1
+  m_punchSpacing: 6
   m_moveSpeed: 1.5
   m_fists:
   - {fileID: 1335822340}
