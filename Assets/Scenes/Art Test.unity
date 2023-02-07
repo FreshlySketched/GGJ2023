@@ -345,18 +345,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5368065454027010257, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
-      propertyPath: weaponManger
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6690226481332704327, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8504296824134195768, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
-      propertyPath: m_health
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050d0cea8908e5048b990b74a4954eed, type: 3}
 --- !u!1 &190355830
@@ -2741,7 +2729,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 280d5cc4c3a17884281aad20e7fe1e26, type: 3}
-  m_Color: {r: 0.6391955, g: 0.6669761, b: 0.7169812, a: 0.95686275}
+  m_Color: {r: 0.6391955, g: 0.6669761, b: 0.7169812, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2908,9 +2896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e07e3cfabe3ba46a8742063176a435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
-  proximityText: 
-  interactText: 
+  dialogue: {fileID: 724442428}
+  proximityText: Proximity Text
+  interactText: Interact Text
   fadeTime: 2.5
   interactionChat:
     m_PersistentCalls:
@@ -2993,7 +2981,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.00967608, y: -0.0012610101}
@@ -3217,7 +3205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7535915111839191468, guid: ab43ef53f1dbb2a40b7d58e33f9b0b6e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.79
+      value: -20.34
       objectReference: {fileID: 0}
     - target: {fileID: 7535915111839191468, guid: ab43ef53f1dbb2a40b7d58e33f9b0b6e, type: 3}
       propertyPath: m_LocalPosition.y
